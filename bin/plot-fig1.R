@@ -47,7 +47,7 @@ pca_plot <- dat %>%
   scale_color_manual("Population", values = this_pal)
 
 ## Mutation Statistics
-nat_dat <- here::here("data", "nat_variant_info.tsv") %>%
+nat_dat <- here::here("data", "nat_variant_info.tsv.gz") %>%
   readr::read_tsv(col_types = "cicciidccccddd") %>%
   janitor::clean_names() %>%
   dplyr::filter(alt != "*") %>%
