@@ -1,4 +1,24 @@
 set.seed(551991)
+
+## Install requirements
+installed_packages <- rownames(installed.packages())
+required <- c(
+  "tidyverse", "here", "furrr", "patchwork", "ggforce", "ggrepel", "ggbeeswarm",
+  "tidygraph", "ggraph", "remotes", "Rcpp", "RcppArmadillo", "matrixStats",
+  "sf", "rnaturalearth", "sp", "gstat", "raster", "sys", "ape"
+)
+install.packages(required[!required %in% installed_packages])
+## flashpcaR
+if (!"flashpcaR" %in% installed_packages)
+  remotes::install_github("gabraham/flashpca/flashpcaR")
+## admixtools
+if (!"admixtools" %in% installed_packages)
+  remotes::install_github("uqrmaie1/admixtools")
+## ggtree
+if (!"ggtree" %in% installed_packages)
+  BiocManager::install("ggtree")
+
+## Setup environment
 ggplot2::theme_set(ggplot2::theme_classic(10, "Helvetica"))
 
 cbpal <- c(
