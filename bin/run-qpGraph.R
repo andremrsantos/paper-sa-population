@@ -44,7 +44,7 @@ plot_admixtree <- function(layout, ...) {
     geom_node_label(aes(
       label = name, color = region,
       filter = !str_starts(name, "SA") & name != "Root"
-    ), size = 2.5) +
+    ), size = 2) +
     scale_edge_linetype_manual(
       "Edge",
       values = c(edge = "solid", admix = "dashed"),
@@ -178,13 +178,13 @@ top_models <- dat %>%
     edges = map(graph, "edges"),
     name = sprintf("%s - Likelihood: %.2f", model_name, score)
   ) %>%
-  slice_min(score, n = 8)
+  slice_min(score, n = 10)
 
 top_models_plot <- top_models$edges %>%
   map(admixtree_layout) %>%
   map(plot_admixtree, label = round(weight, 2)) %>%
-  map2(top_models$name, ~ .x + ggtitle(.y)) %>%
-  wrap_plots(ncol = 4) +
+  map2(top_models$name, ~ .x + ggtitle("", subtitle = .y)) %>%
+  wrap_plots(ncol = 5) +
   plot_layout(guides = "collect") +
   plot_annotation(tag_levels = "1", tag_prefix = "#") &
   theme(legend.position = "bottom")
