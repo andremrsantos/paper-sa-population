@@ -18,6 +18,15 @@ if (!"admixtools" %in% installed_packages)
 if (!"ggtree" %in% installed_packages)
   BiocManager::install("ggtree")
 
+## Wrapper to save both PDF and TIFF
+save_plot <- function(prefix, plot, ...) {
+  ggsave(paste0(prefix, ".pdf"), plot, ..., useDingbats = FALSE)
+  ggsave(
+    paste0(prefix, ".tiff"), plot, ...,
+    dpi = 300, compression = "lzw", type = "cairo"
+  )
+}
+
 ## Setup environment
 ggplot2::theme_set(ggplot2::theme_classic(10, "Helvetica"))
 

@@ -31,12 +31,12 @@ pca_plot <- amz_dat %>%
   scale_color_manual(values = this_pal)
 pve_plot <- plot_pve(amz_pca)
 
-ggsave(
+save_plot(
   here("figs", "sup-fig", "sup-fig_amz-pca.pdf"),
   pca_plot / pve_plot +
     plot_layout(heights = c(3,1)) +
     plot_annotation(tag_levels = "A"),
-  height = 10, width = 8, useDingbats = FALSE
+  height = 10, width = 8
 )
 
 ## Native America PCA
@@ -49,12 +49,12 @@ pca_plot <- nat_dat %>%
   scale_color_manual("Region", values = subgroups_pal)
 pve_plot <- plot_pve(nat_pca)
 
-ggsave(
+save_plot(
   here("figs", "sup-fig", "sup-fig_nat-pca.pdf"),
   pca_plot / pve_plot +
     plot_layout(heights = c(3,1)) +
     plot_annotation(tag_levels = "A"),
-  height = 10, width = 8, useDingbats = FALSE
+  height = 10, width = 8
 )
 
 ## Global PCA
@@ -67,12 +67,12 @@ pca_plot <- global_dat %>%
   scale_color_brewer("Continental Group", palette = "Set2")
 pve_plot <- plot_pve(global_pca)
 
-ggsave(
+save_plot(
   here("figs", "sup-fig", "sup-fig_global-pca.pdf"),
   pca_plot / pve_plot +
     plot_layout(heights = c(3,1)) +
     plot_annotation(tag_levels = "A"),
-  height = 10, width = 8, useDingbats = FALSE
+  height = 10, width = 8
 )
 
 # ## Save pca
