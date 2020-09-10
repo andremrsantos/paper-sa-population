@@ -80,8 +80,7 @@ if (!file.exists(file)) {
     map(match, rownames(dat$bed))
   print("No Populations: ")
   print(length(pop))
-  
-  ac <- allele_count
+
   vr <- which(colMeans2(dat$bed, rows = idv, na.rm = TRUE)/2 > 0.01)
   an <- purrr::map(pop, ~ 2 * length(.x) - colCounts(dat$bed, cols = vr, rows = .x, value = NA_integer_))
   a1 <- purrr::map(pop, ~ colSums2(dat$bed, rows = .x, na.rm = TRUE))
@@ -106,7 +105,7 @@ if (!file.exists(paste0(boot, ".treeout.gz"))) {
   library(furrr)
   plan(multisession, workers = 4)
   
-  files <- paste0(boot, '-', 1:5)
+  files <- paste0(boot, '-', 1:500)
   reslt <- future_map_int(files, exec_treemix, input = file, .progress = TRUE)
   if (any(reslt != 0)) {
     failed <- sum(reslt != 0)
