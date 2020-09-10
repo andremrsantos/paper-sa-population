@@ -25,6 +25,7 @@ save_plot <- function(prefix, plot, ...) {
     paste0(prefix, ".tiff"), plot, ...,
     dpi = 300, compression = "lzw", type = "cairo"
   )
+  ggsave(paste0(prefix, ".png"), plot, ..., dpi = 150)
 }
 
 ## Setup environment
