@@ -30,7 +30,6 @@ compute_total <- function(plink, pops) {
 }
 
 compute_frequency <- function(plink, pops) {
-  pops <- map(pops, match, rownames(plink$bed))
   allele_count <- compute_count(plink, pops)
   allele_total <- compute_total(plink, pops)
   
@@ -40,8 +39,7 @@ compute_frequency <- function(plink, pops) {
 ## Compute D-statistic -----------
 as_idx <- function(names, w, x, y, z = NULL) {
   idx <- cbind(match(w, names), match(x, names), match(y, names))
-  if (!is.null(z))
-    idx <- cbind(idx, match(z, names))
+  if (!is.null(z)) { idx <- cbind(idx, match(z, names)) }
   return(idx)
 }
 
