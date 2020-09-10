@@ -23,6 +23,7 @@ exec_treemix <- function(
     "docker", "run", "--rm", "-w", here(), "-v", paste0(here(), ":", here()),
     "quay.io/biocontainers/treemix:1.13--h4bb999f_2", "treemix"
   )
+  if (file.exists(paste0(output, ".treeout.gz"))) { return(0L) }
   
   arg <- c("-i", input, "-o", output, "-k", block, "-root", root)
   if (!is.null(migration))
@@ -129,6 +130,7 @@ treemix_best <-
   treemix_tree %>%
   groupOTU(pop_subgroup) %>%
   add_conf(treemix_boot) %>%
+  mutate(group = if_else(group == "0", NA_character_, as.character(group))) %>%
   ggtree(size = NA) +
   geom_tree(layout = "slanted", aes(color = group)) +
   geom_tiplab(size = 2.5) +
@@ -142,7 +144,7 @@ treemix_best <-
     aes(xend = xend, yend = yend, alpha = rate)
   ) +
   scale_x_continuous(expand = expansion(mult = c(0, .15))) +
-  scale_color_manual("Region", values = subgroups_pal2) +
+  scale_color_manual("Region", values = subgroups_pal2, na.value = "darkgray") +
   scale_alpha("Migration rate") +
   theme_tree2() +
   theme(
