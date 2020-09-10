@@ -53,5 +53,5 @@ full_diagnostic <- dat %>%
 
 save_plot(
   here("figs", "sup-fig", "sup-fig_admixture-diagnostic"),
-  full_distruct, width = 10, height = 8
+  full_diagnostic, width = 4, height = 4
 )
