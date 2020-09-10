@@ -167,9 +167,9 @@ model_plots <- models %>%
   plot_annotation(tag_prefix = "Model ", tag_levels = "1") +
   plot_layout(guides = "collect")
 
-ggsave(
-  here("figs", "sup-fig", "sup-fig_qpgraph_models.pdf"),
-  model_plots, width = 8, height = 3, useDingbats = FALSE
+save_plot(
+  here("figs", "sup-fig", "sup-fig_qpgraph_models"),
+  model_plots, width = 8, height = 3
 )
 
 top_models <- dat %>%
@@ -189,9 +189,9 @@ top_models_plot <- top_models$edges %>%
   plot_annotation(tag_levels = "1", tag_prefix = "#") &
   theme(legend.position = "bottom")
 
-ggsave(
-  here("figs", "sup-fig", "sup-fig_qpgraph_top_models.pdf"),
-  top_models_plot, width = 10, height = 8, useDingbats = FALSE
+save_plot(
+  here("figs", "sup-fig", "sup-fig_qpgraph_top_models"),
+  top_models_plot, width = 10, height = 8
 )
 
 model_lik <- dat %>%
@@ -224,7 +224,7 @@ model_f4 <- dat %>%
     axis.ticks.y = element_blank()
   )
 
-ggsave(
-  here("figs", "sup-fig", "sup-fig_qpgraph_model_likelihood.pdf"),
-  model_lik + model_f4, width = 8, height = 4, useDingbats = FALSE
+save_plot(
+  here("figs", "sup-fig", "sup-fig_qpgraph_model_likelihood"),
+  model_lik + model_f4, width = 8, height = 4
 )

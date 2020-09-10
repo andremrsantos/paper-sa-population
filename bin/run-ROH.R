@@ -44,7 +44,7 @@ legend_style <- function(at = c(1, 1), color = 1, shape = 2) {
       legend.box = "horizontal",
       legend.title = element_text(size = 5), 
       legend.text = element_text(size = 5),
-      legnd.key.size = unit(.75, "lines")
+      legend.key.height = unit(.75, "lines")
     )
   )
 }
@@ -102,10 +102,10 @@ roh_age_scatter <- summarise_roh(roh, age, subgroup) %>%
   ) +
   legend_style(c(0, 1))
 
-ggsave(
-  here("figs", "sup-fig", "sup-fig_roh-age.pdf"),
+save_plot(
+  here("figs", "sup-fig", "sup-fig_roh-age"),
   (roh_age + roh_age_scatter) + plot_annotation(tag_levels = "A"),
-  width = 8, height = 4, useDingbats = FALSE
+  width = 8, height = 4
 )
 
 ## B) ROH Study
@@ -139,8 +139,8 @@ roh_study_scatter <- roh %>%
   ) +
   legend_style(c(0, 1))
 
-ggsave(
-  here("figs", "sup-fig", "sup-fig_roh-study.pdf"),
+save_plot(
+  here("figs", "sup-fig", "sup-fig_roh-study"),
   (roh_study + roh_study_scatter) + plot_annotation(tag_levels = "A"),
-  width = 8, height = 4, useDingbats = FALSE
+  width = 8, height = 4
 )

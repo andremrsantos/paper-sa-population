@@ -109,7 +109,5 @@ mut_ <- mut_plot +
 fig1 <- ((br_map + pca_) / mut_) +
   plot_layout(heights = c(3, 1), widths = c(1, 1)) +
   plot_annotation(tag_levels = "A")
-ggsave(
-  here("figs", "fig1", "fig-1_amz.pdf"),
-  fig1, width = 8, height = 5, useDingbats = FALSE
-)
+
+save_plot(here("figs", "fig1", "fig-1_amz"), fig1, width = 8, height = 5)

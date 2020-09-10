@@ -26,7 +26,7 @@ full_distruct <- plot_distruct(dat, pop, subgroup2, K = K) +
   scale_fill_manual(values = cbpal) +
   facet_grid(K~.)
 
-ggsave(
-  here("figs", "sup-fig", "sup-fig_admixture-full.pdf"),
-  full_distruct, width = 10, height = 8, useDingbats = FALSE
+save_plot(
+  here("figs", "sup-fig", "sup-fig_admixture-full"),
+  full_distruct, width = 10, height = 8
 )

@@ -83,7 +83,5 @@ fig2 <- (
 ) +
   plot_layout(heights = c(4, 1)) +
   plot_annotation(tag_levels = "A")
-ggsave(
-  here("figs", "fig2", "fig-2_america.pdf"),
-  fig2, width = 8, height = 9, useDingbats = FALSE
-)
+
+save_plot(here("figs", "fig2", "fig-2_america"), fig2, width = 8, height = 9)

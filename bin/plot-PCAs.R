@@ -32,7 +32,7 @@ pca_plot <- amz_dat %>%
 pve_plot <- plot_pve(amz_pca)
 
 save_plot(
-  here("figs", "sup-fig", "sup-fig_amz-pca.pdf"),
+  here("figs", "sup-fig", "sup-fig_amz-pca"),
   pca_plot / pve_plot +
     plot_layout(heights = c(3,1)) +
     plot_annotation(tag_levels = "A"),
@@ -50,7 +50,7 @@ pca_plot <- nat_dat %>%
 pve_plot <- plot_pve(nat_pca)
 
 save_plot(
-  here("figs", "sup-fig", "sup-fig_nat-pca.pdf"),
+  here("figs", "sup-fig", "sup-fig_nat-pca"),
   pca_plot / pve_plot +
     plot_layout(heights = c(3,1)) +
     plot_annotation(tag_levels = "A"),
@@ -68,7 +68,7 @@ pca_plot <- global_dat %>%
 pve_plot <- plot_pve(global_pca)
 
 save_plot(
-  here("figs", "sup-fig", "sup-fig_global-pca.pdf"),
+  here("figs", "sup-fig", "sup-fig_global-pca"),
   pca_plot / pve_plot +
     plot_layout(heights = c(3,1)) +
     plot_annotation(tag_levels = "A"),

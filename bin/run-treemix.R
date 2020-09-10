@@ -7,10 +7,6 @@ library(ggtree)
 library(ape)
 library(patchwork)
 
-library(sys)
-library(furrr)
-plan(multisession, workers = 4)
-
 source(here("R", "setup.R"))
 source(here("R", "sample.R"))
 source(here("R", "plink.R"))
@@ -22,6 +18,7 @@ dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
 exec_treemix <- function(
   input, output, block = 50, root = "Mbuti", migration = NULL
   ) {
+  require(sys)
   treemix <- c(
     "docker", "run", "--rm", "-w", here(), "-v", paste0(here(), ":", here()),
     "quay.io/biocontainers/treemix:1.13--h4bb999f_2", "treemix"
@@ -106,6 +103,9 @@ if (!file.exists(paste0(best, ".treeout.gz"))) {
 }
 
 if (!file.exists(paste0(boot, ".treeout.gz"))) {
+  library(furrr)
+  plan(multisession, workers = 4)
+  
   files <- paste0(boot, '-', 1:5)
   reslt <- future_map_int(files, exec_treemix, input = file, .progress = TRUE)
   if (any(reslt != 0)) {
@@ -187,10 +187,10 @@ treemix_consensus <- consensus(treemix_boot, p = 0.75) %>%
 # )
 
 ## Compile as a single figure
-ggsave(
-  here("figs", "sup-fig", "sup-fig_treemix-merged.pdf"),
+save_plot(
+  here("figs", "sup-fig", "sup-fig_treemix-merged"),
   treemix_best / treemix_consensus,
-  width = 6, height = 8, useDingbats = FALSE
+  width = 6, height = 8
 )
 
 

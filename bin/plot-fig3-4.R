@@ -8,17 +8,21 @@ source(here("R", "sample.R"))
 source(here("R", "dstat.R"))
 source(here("R", "map.R"))
 
-dir.create(here("figs", "fig3"), recursive = TRUE, showWarnings = FALSE)
-dir.create(here("figs", "fig4"), recursive = TRUE, showWarnings = FALSE)
-dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
-
 ## Load data ----
 plink <- read_plink(here("out", "plink", "DataB"))
 
 dat <- left_join(plink$fam, read_sample_info())
+fam <- plink$fam %>% left_join(read_sample_info())
 
-pop_sample <- with(fam, c(split(sample, pop), split(sample, subgroup)))
+pop_sample <- fam %>%
+  with(c(split(sample, pop), split(sample, subgroup))) %>%
+  discard(~ length(.x) == 0)
 pop_freq   <- compute_frequency(plink, pop_sample)
+
+pop_order <- c(
+  "AKW", "ARA", "ARW", "AST", "AWA", "KAY", "PTJ", "WPI", "Surui", "Karitiana",
+  "Jabuticabeira", "LapadoSanto", "Laranjal", "Sumidouro"
+)
 
 ## Compute migration models ------
 ## Listing populations per region
@@ -27,52 +31,19 @@ amazon <- unique(filter(dat, subgroup == "Amazon", age == "Contemporan")$pop)
 wandes <- unique(filter(dat, subgroup == "West Andes", age == "Contemporan")$pop)
 south  <- unique(filter(dat, subgroup == "South", age == "Contemporan")$pop)
 
-dstat_models <- list(
-  model1 = dstat("Mbuti", native, amazon, wandes, pop_freq),
-  model2 = dstat("Mbuti", native,  south, wandes, pop_freq),
-  model3 = dstat("Mbuti", native, amazon,  south, pop_freq)
-)
-
+dstat_models_file <- here("out", "dstat-model.rds")
+if (!file.exists(dstat_models_file)) {
+  dstat_models <- list(
+    model1 = dstat("Mbuti", native, amazon, wandes, pop_freq),
+    model2 = dstat("Mbuti", native,  south, wandes, pop_freq),
+    model3 = dstat("Mbuti", native, amazon,  south, pop_freq)
+  )
+  saveRDS(dstat_models, dstat_models_file)
+} else {
+  dstat_models <- readRDS(dstat_models_file)
+}
 
 ## Plots ------
-## Fig3. D-stat Australasian -----
-australasian <- unique(filter(dat, group == "OCE", pop != "Hawaiian")$pop)
-native       <- unique(filter(dat, group == "NAT", country == "Brazil")$pop)
-native_anc   <- unique(filter(dat, group == "NAT", age == "Ancient")$pop)
-
-pop_order <- c(
-  "AKW", "ARA", "ARW", "AST", "AWA", "KAY", "PTJ", "WPI", "Surui", "Karitiana",
-  "Jabuticabeira", "LapadoSanto", "Laranjal", "Sumidouro"
-)
-
-dstat_australasian <- dstat(
-  "Mbuti", australasian, c("Mixe", native_anc), c(native, australasian),
-  pop_freq, size = 100
-)
-
-dstat_scatter <- dstat_australasian %>%
-  left_join(dstat_info, by = c(z = "pop")) %>%
-  filter(!x %in% c("Hawaiian"), y == "Mixe", x != z, z %in% pop_order) %>%
-  plot_dstat_scatter(z) +
-  labs(
-    y = "D(Mbuti, Australasin; Mixe, X)\n(Mixe, Australasian)<--->(X, Australasian)",
-    color = "Age"
-  )  +
-  scale_x_discrete(limits = rev(pop_order)) +
-  scale_y_continuous(breaks = c(-10, -5, -2, 0, 2, 5, 10)) +
-  coord_flip(ylim = c(-10, 10)) +
-  theme(
-    legend.position = c(1, 0),
-    legend.justification = c(1, 0),
-    legend.key.height = unit(1, "lines"),
-    legend.key.width = unit(.5, "lines"),
-    legend.background = element_blank()
-  )
-ggsave(
-  here("figs", "fig3", "fig3_dstat-australesian.pdf"),
-  dstat_scatter, width = 4, height = 4.5, useDingbats = FALSE
-)
-
 ## SupFig. D-stat Amazon v West Andes -----
 dstat_info <- dat %>%
   group_by(pop, group, subgroup, age) %>%
@@ -87,10 +58,12 @@ dstat_scatter <- dstat_models[["model1"]] %>%
     y = "D(Mbuti, X; Amazon, WestAndes)\n(X, Amazon) <---> (X, WestAndes)",
     color = "Age"
   )
-ggsave(
-  here("figs", "sup-fig", "sup-fig_dstat-amazon-v-wandes.pdf"),
-  dstat_scatter, width = 4, height = 5, useDingbats = FALSE
-)
+
+# dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
+# save_plot(
+#   here("figs", "sup-fig", "sup-fig_dstat-amazon-v-wandes"),
+#   dstat_scatter, width = 4, height = 5
+# )
 
 ## SupFig. D-stat migration models -----
 dstat_scatter <- bind_rows(
@@ -107,10 +80,12 @@ dstat_scatter <- bind_rows(
     strip.text.x = element_text(angle = 90, hjust = 0),
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
   )
-ggsave(
-  here("figs", "sup-fig", "sup-fig_dstat-scatter.pdf"),
-  dstat_scatter, width = 8, height = 4, useDingbats = FALSE
-)
+
+# dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
+# save_plot(
+#   here("figs", "sup-fig", "sup-fig_dstat-scatter"),
+#   dstat_scatter, width = 8, height = 4
+# )
 
 ## Fig4. D-stat IDW ------
 dstat_idw <- dstat_models %>%
@@ -135,7 +110,50 @@ dstat_idw_map <- ggplot(dstat_info) +
   ) +
   facet_grid(~Desc) +
   theme(strip.background = element_blank())
-ggsave(
-  here("figs", "fig4", "fig4_dstat-idw-map.pdf"),
-  dstat_idw_map, width = 8, height = 4, useDingbats = FALSE
+
+dir.create(here("figs", "fig4"), recursive = TRUE, showWarnings = FALSE)
+save_plot(
+  here("figs", "fig4", "fig4_dstat-idw-map"),
+  dstat_idw_map, width = 8, height = 4
+)
+
+## Fig3. D-stat Australasian -----
+australasian <- unique(filter(dat, group == "OCE", pop != "Hawaiian")$pop)
+native       <- unique(filter(dat, group == "NAT", country == "Brazil")$pop)
+native_anc   <- unique(filter(dat, group == "NAT", age == "Ancient")$pop)
+
+dstat_australasian_file <- here("out", "dstat-australasian.rds")
+if (!file.exists(dstat_australasian_file)) {
+  dstat_australasian <- dstat(
+    "Mbuti", australasian, c("Mixe", native_anc), c(native, australasian),
+    pop_freq, size = 100
+  )
+  saveRDS(dstat_australasian, dstat_australasian_file)
+} else {
+  dstat_australasian <- readRDS(dstat_australasian_file)
+}
+
+dstat_scatter <- dstat_australasian %>%
+  left_join(dstat_info, by = c(z = "pop")) %>%
+  filter(!x %in% c("Hawaiian"), y == "Mixe", x != z, z %in% pop_order) %>%
+  plot_dstat_scatter(z) +
+  labs(
+    y = "D(Mbuti, Australasin; Mixe, X)\n(Mixe, Australasian)<--->(X, Australasian)",
+    color = "Age"
+  )  +
+  scale_x_discrete(limits = rev(pop_order)) +
+  scale_y_continuous(breaks = c(-10, -5, -2, 0, 2, 5, 10)) +
+  coord_flip(ylim = c(-10, 10)) +
+  theme(
+    legend.position = c(1, 0),
+    legend.justification = c(1, 0),
+    legend.key.height = unit(1, "lines"),
+    legend.key.width = unit(.5, "lines"),
+    legend.background = element_blank()
+  )
+
+dir.create(here("figs", "fig3"), recursive = TRUE, showWarnings = FALSE)
+save_plot(
+  here("figs", "fig3", "fig3_dstat-australesian"),
+  dstat_scatter, width = 4, height = 4.5
 )

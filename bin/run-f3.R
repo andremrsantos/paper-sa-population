@@ -40,7 +40,13 @@ native <- unique(filter(dat, group == "NAT", age == "Contemporan")$pop)
 
 native <- unique(filter(dat, group == "NAT")$pop)
 
-f3_outgroup <- f3_stat("Mbuti", native, native, pop_count, pop_total)
+f3_outgroup_file <- here("out", "f3-outgroup.rds")
+if (file.exists(f3_outgroup_file)) {
+  f3_outgroup <- readRDS(f3_outgroup_file)
+} else {
+  f3_outgroup <- f3_stat("Mbuti", native, native, pop_count, pop_total)
+  saveRDS(f3_outgroup, f3_outgroup_file)
+}
 
 ## Plotting -----
 f3_label_pop <- pop_info %>% 
@@ -62,7 +68,7 @@ f3_map <- f3_outgroup %>%
   facet_wrap(~ y) +
   labs(x = "", y = "", title = "F3(Mbuti, X, Y)") +
   theme(legend.position = c(1, 0), legend.justification = c(1, 0))
-ggsave(
-  here::here("figs", "sup-fig", "sup-fig_f3-map.pdf"),
-  f3_map, height = 10, width = 8, useDingbats = FALSE
+save_plot(
+  here::here("figs", "sup-fig", "sup-fig_f3-map"),
+  f3_map, height = 10, width = 8
 )
