@@ -1,5 +1,6 @@
-cli::cli_h1("ROH analysis")
+#! Rscript --vanilla
 
+cli::cli_h1("ROH analysis")
 cli::cli_alert_info("Loading required packages")
 suppressMessages({
   library(tidyverse)
