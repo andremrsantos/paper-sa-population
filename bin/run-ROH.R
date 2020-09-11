@@ -34,24 +34,6 @@ summarise_roh <- function(dat, ...) {
     dplyr::summarise(total_length = sum(KB)/1e3, rohs = n(), .groups =  "drop") 
 }
 
-# legend_style <- function(at = c(1, 1), color = 1, shape = 2) {
-#   list(
-#     ggplot2::guides(
-#       color = guide_legend(order = color),
-#       shape = guide_legend(order = shape)
-#     ),
-#     ggplot2::theme(
-#       legend.position = at,
-#       legend.justification = at,
-#       legend.background = element_blank(),
-#       legend.box = "horizontal",
-#       legend.title = element_text(size = 5), 
-#       legend.text = element_text(size = 5),
-#       legend.key.height = unit(.75, "lines")
-#     )
-#   )
-# }
-
 plot_roh <- function(dat, shape) {
   ## Define default setup
   plot_pointrange <- list(
