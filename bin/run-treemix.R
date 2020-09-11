@@ -1,16 +1,17 @@
-library(tidyverse)
-library(here)
-library(matrixStats)
-## Read treeout
-# BiocManager::install("ggtree")
-library(ggtree)
-library(ape)
-library(patchwork)
+cli::cli_h1("Treemix Analysis")
+cli::cli_alert_info("Loading required packages")
+suppressMessages({
+  library(tidyverse)
+  library(here)
+  library(ggtree)
+  library(ape)
+  library(patchwork)
 
-source(here("R", "setup.R"))
-source(here("R", "sample.R"))
-source(here("R", "plink.R"))
-source(here("R", "dstat.R"))
+  source(here("R", "setup.R"))
+  source(here("R", "sample.R"))
+  source(here("R", "plink.R"))
+  source(here("R", "dstat.R"))
+})
 
 dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
 
@@ -18,17 +19,17 @@ dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
 exec_treemix <- function(
   input, output, block = 50, root = "Mbuti", migration = NULL
   ) {
-  require(sys)
-  treemix <- c(
-    "docker", "run", "--rm", "-w", here(), "-v", paste0(here(), ":", here()),
-    "quay.io/biocontainers/treemix:1.13--h4bb999f_2", "treemix"
-  )
-  if (file.exists(paste0(output, ".treeout.gz"))) { return(0L) }
-  
-  arg <- c("-i", input, "-o", output, "-k", block, "-root", root)
-  if (!is.null(migration))
-    arg <- c(arg, "-m", migration)
-  sys::exec_wait(treemix[1], c(treemix[-1], arg), std_out = FALSE)
+    suppressMessages(require(sys))
+    treemix <- c(
+      "docker", "run", "--rm", "-w", here(), "-v", paste0(here(), ":", here()),
+      "quay.io/biocontainers/treemix:1.13--h4bb999f_2", "treemix"
+    )
+    if (file.exists(paste0(output, ".treeout.gz"))) { return(0L) }
+
+    arg <- c("-i", input, "-o", output, "-k", block, "-root", root)
+    if (!is.null(migration))
+      arg <- c(arg, "-m", migration)
+    sys::exec_wait(treemix[1], c(treemix[-1], arg), std_out = FALSE)
 }
 
 add_conf <- function(tree, boots) {
@@ -41,7 +42,7 @@ add_conf <- function(tree, boots) {
 read_migration <- function(lines) {
   tree <- read.tree(text = lines[1])
   node_df <- fortify(tree) %>% select(node, x, y)
-  
+
   extract_node <- function(node) {
     if (str_detect(node, "\\(")) {
       nodes <- str_extract_all(node, "[A-Za-z]+")[[1]]
@@ -53,69 +54,87 @@ read_migration <- function(lines) {
   readr::read_delim(
     lines[-1], delim = " ",
     col_names = c("rate", "A", "B", "C", "source", "dest")
-  ) %>%
+    ) %>%
     mutate(
       source_node = map_int(source, extract_node),
       dest_node = map_int(dest, extract_node)
     ) %>%
     left_join(node_df, by = c(source_node = "node")) %>%
-    left_join(rename(node_df, dest_node = "node", xend = "x", yend = "y"))
+    left_join(
+      rename(node_df, xend = "x", yend = "y"),
+      by = c(dest_node = "node")
+    )
 }
 
 ## Load data -----
+cli::cli_alert_info("Loading data")
 dat <- read_plink(here("out", "plink", "DataB"))
-fam <- left_join(dat$fam, read_sample_info())
+fam <- left_join(dat$fam, read_sample_info(), by = c("pop", "sample"))
 
 ## Write treemix -----
 file <- here("out", "treemix", "DataB_fq01.treemix.gz")
 
 if (!file.exists(file)) {
-  idv <- filter(fam, age == "Contemporan", group == "NAT" | pop == "Mbuti") %>%
-    pull(sample) %>%
-    match(rownames(dat$bed))
-  print("No Samples: ")
-  print(length(idv))
-  
-  pop <- filter(fam, age == "Contemporan", group == "NAT" | pop == "Mbuti") %>%
-    with(split(sample, pop)) %>%
-    map(match, rownames(dat$bed))
-  print("No Populations: ")
-  print(length(pop))
+  cli::cli_alert_warning("Unable to find treemix dataset")
+  cli::cli_alert_info("Running treemix")
 
-  vr <- which(colMeans2(dat$bed, rows = idv, na.rm = TRUE)/2 > 0.01)
-  an <- purrr::map(pop, ~ 2 * length(.x) - colCounts(dat$bed, cols = vr, rows = .x, value = NA_integer_))
-  a1 <- purrr::map(pop, ~ colSums2(dat$bed, rows = .x, na.rm = TRUE))
-  treemix <- names(pop) %>%
-    purrr::set_names(.) %>%
-    purrr::map(~ paste0(a1[[.x]], ",", an[[.x]] - a1[[.x]])) %>%
-    dplyr::bind_cols()
+  fam_subset <- fam %>%
+    filter(age == "Contemporan", group == "NAT" | pop == "Mbuti") %>%
+    mutate(idx = match(sample, rownames(dat$bed)))
+  samples <- fam_subset$idx
+  populations <- with(fam_subset, split(idx, pop))
+  common_vars <- which(allele_freq(samples, dat$bed) > .01)
+
+  cli::cli_alert_info(c(
+    "Processing ",
+    "{length(common_vars)} variant{?s} among ",
+    "{length(samples)} sample{?s} within ",
+    "{length(populations)} population{?s}."
+  ))
+
+  ac <- map(populations, allele_count, mtx = dat$bed[, common_vars])
+  an <- map(populations, allele_total, mtx = dat$bed[, common_vars])
+  treemix <- names(populations) %>%
+    set_names(.) %>%
+    map(~ sprintf("%d,%d", ac[[.x]], an[[.x]] - ac[[.x]])) %>%
+    bind_cols()
+
   ## Save
   dir.create(here("out", "treemix"), showWarnings = FALSE, recursive = TRUE)
   write_tsv(treemix, file)
+  cli::cli_alert_success("Saved treemix data at `{file}`")
 }
 
-## Run Treemix
+## Run Treemix ------
 best <- here("out", "treemix", "DataB_fq01")
 boot <- here("out", "treemix", "DataB_fq01_boot")
 
 if (!file.exists(paste0(best, ".treeout.gz"))) {
+  cli::cli_alert_warning("Unable to find treemix results")
   exec_treemix(input = file, output = best, migration = 5)
+  cli::cli_alert_success("Complete treemix run")
 }
 
 if (!file.exists(paste0(boot, ".treeout.gz"))) {
-  library(furrr)
-  plan(multisession, workers = 4)
-  
-  files <- paste0(boot, '-', 1:500)
+  cli::cli_alert_warning("Unable to find treemix bootstrap results")
+  suppressMessages({
+    library(furrr)
+    plan(multisession, workers = 4)
+  })
+
+  files <- paste0(boot, "-", 1:500)
   reslt <- future_map_int(files, exec_treemix, input = file, .progress = TRUE)
   if (any(reslt != 0)) {
     failed <- sum(reslt != 0)
+    cli::cli_alert_danger("{sum(reslt != 0)} bootstrap runs failed!")
     stop(str_glue("A total of {failed} bootstrap run failed!"))
   }
+
   map(files, paste0, ".treeout.gz") %>%
     map(read_lines) %>%
     reduce(c) %>%
     write_lines(paste0(boot, ".treeout.gz"))
+  cli::cli_alert_success("Complete treemix bootstrap")
 }
 
 ## read sample info ------
@@ -126,6 +145,7 @@ treemix_tree <- read.tree(text = treemix_lines[1])
 treemix_boot <- read.tree(paste0(boot, ".treeout.gz"))
 treemix_migr <- read_migration(treemix_lines)
 
+cli::cli_alert_info("Generating treemix plots")
 treemix_best <-
   treemix_tree %>%
   groupOTU(pop_subgroup) %>%
@@ -153,10 +173,6 @@ treemix_best <-
     legend.background = element_blank(),
     legend.key.height = unit(.8, "lines")
   )
-# ggsave(
-#   here("figs", "sup-fig_treemix.pdf"),
-#   treemix_best, width = 4.5, height = 4, useDingbats = FALSE
-# )
 
 treemix_consensus <- consensus(treemix_boot, p = 0.75) %>%
   groupOTU(pop_subgroup) %>%
@@ -182,10 +198,6 @@ treemix_consensus <- consensus(treemix_boot, p = 0.75) %>%
     legend.background = element_blank(),
     legend.key.height = unit(.8, "lines")
   )
-# ggsave(
-#   here("figs", "sup-fig_treemix-consensus.pdf"),
-#   treemix_consensus, width = 4.5, height = 4, useDingbats = FALSE
-# )
 
 ## Compile as a single figure
 save_plot(
@@ -194,5 +206,4 @@ save_plot(
   width = 6, height = 8
 )
 
-
-
+cli::cli_alert_success("Done!")
