@@ -20,6 +20,10 @@ allele_total <- function(indv, mtx) {
   2 * (length(indv) - total_na)
 }
 
+allele_freq <- function(indv, mtx) {
+  allele_count(indv, mtx) / allele_total(indv, mtx)
+}
+
 compute_count <- function(plink, pops) {
   count <- pops %>% 
     map(match, rownames(plink$bed)) %>%
