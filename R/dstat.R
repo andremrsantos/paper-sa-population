@@ -11,10 +11,19 @@ as_matrix <- function(lst)
 row_sum   <- function(cols, data)
   matrixStats::rowSums2(data, cols = cols, na.rm = TRUE)
 
+allele_count <- function(indv, mtx) {
+  matrixStats::colSums2(mtx, rows = indv, na.rm = TRUE)
+}
+
+allele_total <- function(indv, mtx) {
+  total_na <- matrixStats::colCounts(mtx, rows = indv, value = NA_integer_)
+  2 * (length(indv) - total_na)
+}
+
 compute_count <- function(plink, pops) {
   count <- pops %>% 
     map(match, rownames(plink$bed)) %>%
-    map(~ matrixStats::colSums2(plink$bed, rows = .x, na.rm = TRUE)) %>%
+    map(allele_count, mtx = plink$bed) %>%
     as_matrix()
   colnames(count) <- names(pops)
   return(count)
@@ -23,17 +32,17 @@ compute_count <- function(plink, pops) {
 compute_total <- function(plink, pops) {
   total <- pops %>% 
     map(match, rownames(plink$bed)) %>%
-    map(~ length(.x) - matrixStats::colCounts(plink$bed, rows = .x, value = NA_integer_)) %>%
+    map(allele_total, mtx = plink$bed) %>%
     as_matrix()
   colnames(total) <- names(pops)
-  return(2 * total)
+  return(total)
 }
 
 compute_frequency <- function(plink, pops) {
   allele_count <- compute_count(plink, pops)
   allele_total <- compute_total(plink, pops)
   
-  return(allele_count/allele_total)
+  return(allele_count / allele_total)
 }
 
 ## Compute D-statistic -----------
