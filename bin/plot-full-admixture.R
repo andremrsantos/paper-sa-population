@@ -6,6 +6,14 @@ source(here("R", "sample.R"))
 source(here("R", "plink.R"))
 source(here("R", "admixture.R"))
 
+strip_clip_off <- function(plot, strip = c("r", "l", "t", "b")) {
+  strip <- paste0("strip-", match.arg(strip))
+  q <- ggplotGrob(plot)
+  for (i in which(grepl(strip, q$layout$name)))
+    q$grobs[[i]]$layout$clip <- "off"
+  patchwork::wrap_elements(q)
+}
+
 ## Setup
 dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
 
