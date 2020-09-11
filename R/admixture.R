@@ -26,6 +26,7 @@ read_log <- function(file) {
 
 plot_distruct <- function(dat, group, ..., K = NULL) {
   if(!rlang::quo_is_null(enquo(K))) dat <- group_by(dat, {{K}})
+
   dat <- dat %>%
     arrange(..., {{group}}) %>%
     mutate(i = seq_len(n())) %>%
@@ -38,7 +39,7 @@ plot_distruct <- function(dat, group, ..., K = NULL) {
     filter(!is.na(rate))
   
   dat_axis <- dat %>%
-    group_by({{group}}) %>%
+    group_by({{group}}, ...) %>%
     summarise(bar = max(i) + .5, pos = mean(i))
   
   ggplot(dat, aes(i, rate, fill = cluster)) +
