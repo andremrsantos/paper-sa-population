@@ -30,8 +30,14 @@ summarise_roh <- function(dat, ...) {
 plot_roh <- function(dat, shape) {
   ## Define default setup
   plot_pointrange <- list(
-    stat_summary(fun.data = median_hilow, position = position_dodge(width = .8), geom = "linerange"),
-    stat_summary(fun = median, position = position_dodge(width = .8), geom = "point", size = 1.5)
+    stat_summary(
+      fun.data = median_hilow, geom = "linerange",
+      position = position_dodge(width = .8)
+    ),
+    stat_summary(
+      fun = median, geom = "point", size = 1.5,
+      position = position_dodge(width = .8)
+    )
   )
   plot_scatter <- geom_point(size = 1.5)
 
@@ -49,6 +55,10 @@ plot_roh <- function(dat, shape) {
     theme_classic(8, "Helvetica") +
     plot_pointrange +
     plot_style +
+    guides(
+      shape = ggplot2::guide_legend(title.position = "top"),
+      color = ggplot2::guide_legend(title.position = "top", nrow = 3)
+    ) +
     facet_grid(subgroup~., scales = "free", space = "free") +
     labs(y = "Population", x = "Total ROH length (Mbp)")
   
@@ -66,9 +76,10 @@ plot_roh <- function(dat, shape) {
     guides(shape = "none", color = "none") +
     labs(x = "Total ROH length (Mbp)", y = "Total number of ROHs")
   
-  ((roh_length / roh_scatter) | roh_pop) +
-    plot_layout(guides = "collect") +
-    plot_annotation(tag_levels = "A")
+  (roh_length + roh_scatter + guide_area() + roh_pop) +
+    plot_layout(guides = "collect", design = "14\n24\n34") +
+    plot_annotation(tag_levels = "A") &
+    theme(legend.direction = "horizontal")
 }
 
 ## Compute ROH -----
