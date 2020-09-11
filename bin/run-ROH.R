@@ -1,3 +1,6 @@
+cli::cli_h1("ROH analysis")
+
+cli::cli_alert_info("Loading required packages")
 suppressMessages({
   library(tidyverse)
   library(here)
@@ -8,26 +11,15 @@ suppressMessages({
   source(here("R", "sample.R"))
 })
 
-dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
-
-## Compute ROH -----
-if (!file.exists(here("out", "roh", "DataB.hom"))) {
-  dir.create(here("out", "roh"), recursive = TRUE, showWarnings = FALSE)
-  exec_plink(c(
-    "-bfile", here("out/plink/DataB"),
-    "--homozyg",
-    "--homozyg-kb", "500",
-    "--homozyg-gap", "100",
-    "--homozyg-density", "50",
-    "--homozyg-window-snp", "50",
-    "--homozyg-window-het", "1",
-    "--homozyg-window-missing", "25",
-    "--homozyg-window-threshold", ".05",
-    "--out", "out/roh/DataB"
-  ))
-}
-
 ## Functions -----
+length_breaks <- c(0, 500, 1e3, 2e3, 4e3, 8e3, 16e3, Inf)
+length_labels <- c("0-.5", ".5-1", "1-2", "2-4", "4-8", "8-16", ">16")
+
+subgroup_subset <- c(
+  "Africa", "West Eurasia", "East Asia", "North America",
+  "Amazon", "West Andes", "South East", "South"
+)
+
 summarise_roh <- function(dat, ...) {
   dat %>%
     dplyr::group_by(IID, ...) %>%
@@ -44,7 +36,7 @@ plot_roh <- function(dat, shape) {
 
   plot_style <- list(
     scale_shape_manual("Sample Age", values = 1:5 + 20),
-    scale_color_manual("Region", values = subgroup_palette),
+    scale_color_manual("Region", values = subgroups_pal2),
     theme(
       strip.text.y = element_text(angle = 0, hjust = 0),
       strip.background = element_blank()
@@ -78,18 +70,32 @@ plot_roh <- function(dat, shape) {
     plot_annotation(tag_levels = "A")
 }
 
-## Load data -----
-length_breaks <- c(0, 500, 1e3, 2e3, 4e3, 8e3, 16e3, Inf)
-length_labels <- c("0-.5", ".5-1", "1-2", "2-4", "4-8", "8-16", ">16")
+## Compute ROH -----
+if (!file.exists(here("out", "roh", "DataB.hom"))) {
+  cli::cli_alert_info("Computing ROH data")
 
-subgroup_subset <- c(
-  "Africa", "West Eurasia", "East Asia", "North America",
-  "Amazon", "West Andes", "South East", "South"
-)
-subgroup_palette <- c(
-  subgroups_pal,
-  set_names(setdiff(cbpal, subgroups_pal)[1:3], subgroup_subset[1:3])
-)
+  dir.create(here("out", "roh"), recursive = TRUE, showWarnings = FALSE)
+  res <- exec_plink(c(
+    "-bfile", here("out/plink/DataB"),
+    "--homozyg",
+    "--homozyg-kb", "500",
+    "--homozyg-gap", "100",
+    "--homozyg-density", "50",
+    "--homozyg-window-snp", "50",
+    "--homozyg-window-het", "1",
+    "--homozyg-window-missing", "25",
+    "--homozyg-window-threshold", ".05",
+    "--out", "out/roh/DataB"
+  ))
+  if (res != 0) {
+    stop("Unable to run plink to generate ROH data")
+  }
+  cli::cli_alert_success("Completed ROH data calculation")
+}
+
+
+## Load data -----
+cli::cli_alert_info("Loading ROH data")
 
 roh <- here("out", "roh", "DataB.hom") %>%
   read_table2(col_types = "ccdicciididdd") %>%
@@ -100,6 +106,7 @@ roh <- here("out", "roh", "DataB.hom") %>%
   )
 
 ## Plots -------
+cli::cli_alert_info("Generating ROH plots")
 ## A) ROH by age
 save_plot(
   here("figs", "sup-fig", "sup-fig_roh-age"),
@@ -112,3 +119,4 @@ save_plot(
   plot_roh(filter(roh, age == "Contemporan"), age),
   width = 8, height = 10
 )
+cli::cli_alert_success("Done!")
