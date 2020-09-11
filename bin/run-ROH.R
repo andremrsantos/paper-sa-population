@@ -50,7 +50,7 @@ plot_roh <- function(dat, shape) {
     )
   )
 
-  roh_pop <- summarise_roh(roh, {{shape}}, pop, subgroup) %>%
+  roh_pop <- summarise_roh(dat, {{shape}}, pop, subgroup) %>%
     ggplot(aes(total_length, pop, shape = {{shape}}, color = subgroup)) +
     theme_classic(8, "Helvetica") +
     plot_pointrange +
@@ -62,14 +62,14 @@ plot_roh <- function(dat, shape) {
     facet_grid(subgroup~., scales = "free", space = "free") +
     labs(y = "Population", x = "Total ROH length (Mbp)")
   
-  roh_length <- summarise_roh(roh, {{shape}}, subgroup, length) %>%
+  roh_length <- summarise_roh(dat, {{shape}}, subgroup, length) %>%
     ggplot(aes(length, total_length, color = subgroup, shape = {{shape}})) +
     plot_pointrange +
     plot_style +
     guides(shape = "none", color = "none") +
     labs(x = "ROH length category (Mbp)", y = "Total ROH length (Mbp)")
 
-  roh_scatter <- summarise_roh(roh, {{shape}}, subgroup) %>%
+  roh_scatter <- summarise_roh(dat, {{shape}}, subgroup) %>%
     ggplot(aes(total_length, rohs, color = subgroup, shape = {{shape}})) +
     plot_scatter +
     plot_style +
@@ -129,7 +129,7 @@ save_plot(
 cli::cli_alert_info("Generating ROH plots by sample study")
 save_plot(
   here("figs", "sup-fig", "sup-fig_roh-study"),
-  plot_roh(filter(roh, age == "Contemporan"), age),
+  plot_roh(filter(roh, age == "Contemporan"), study),
   width = 8, height = 8
 )
 cli::cli_alert_success("Done!")
