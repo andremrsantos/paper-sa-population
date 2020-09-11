@@ -5,7 +5,7 @@ installed_packages <- rownames(installed.packages())
 required <- c(
   "tidyverse", "here", "furrr", "patchwork", "ggforce", "ggrepel", "ggbeeswarm",
   "tidygraph", "ggraph", "remotes", "Rcpp", "RcppArmadillo", "matrixStats",
-  "sf", "rnaturalearth", "sp", "gstat", "raster", "sys", "ape"
+  "sf", "rnaturalearth", "sp", "gstat", "raster", "sys", "ape", "cli"
 )
 install.packages(required[!required %in% installed_packages])
 ## flashpcaR
