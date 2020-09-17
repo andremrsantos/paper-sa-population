@@ -1,7 +1,7 @@
 #! Rscript --vanilla
 
-cli::cli_h1("ROH analysis")
-cli::cli_alert_info("Loading required packages")
+cli::cli_h1("Plotting Sup. Figure 7 - ROH")
+cli::cli_alert_info("Setup environment")
 suppressMessages({
   library(tidyverse)
   library(here)
