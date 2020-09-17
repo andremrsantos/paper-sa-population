@@ -84,7 +84,9 @@ f3_stat <- function(w, x, y, ac, an, size = 100, fn = jackknife_f3s) {
 
 plot_dstat_scatter <- function(dat, x = x, color = age) {
   ggplot(dat, aes(reorder({{x}}, {{color}}), zv)) +
-    geom_hline(yintercept = c(-3, 0, 3), linetype = "dashed", color = "firebrick") +
+    geom_hline(
+      yintercept = c(-3, 3), linetype = "dashed", color = "firebrick"
+    ) +
     geom_quasirandom(size = 1, shape = 1) +
     stat_summary(aes(color = {{color}}), fun.data = median_hilow) +
     coord_flip(ylim = c(-15, 15)) +
