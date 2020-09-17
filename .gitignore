@@ -4,4 +4,9 @@
 .Ruserdata
 out/
 figs/
+data/
+!data/sample-info.tsv
+!data/admixed.txt
+!data/fs.txt
+!data/nat_variants.tsv.gz
 .DS_Store
