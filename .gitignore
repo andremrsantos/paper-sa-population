@@ -4,7 +4,7 @@
 .Ruserdata
 out/
 figs/
-data/
+data/*
 !data/sample-info.tsv
 !data/admixed.txt
 !data/fs.txt
