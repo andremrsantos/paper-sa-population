@@ -17,7 +17,7 @@ allele_count <- function(indv, mtx) {
 
 allele_total <- function(indv, mtx) {
   total_na <- matrixStats::colCounts(mtx, rows = indv, value = NA_integer_)
-  2 * (length(indv) - total_na)
+  (2 * length(indv) - total_na)
 }
 
 allele_freq <- function(indv, mtx) {
@@ -34,7 +34,7 @@ compute_count <- function(plink, pops) {
 }
 
 compute_total <- function(plink, pops) {
-  total <- pops %>% 
+  total <- pops %>%
     map(match, rownames(plink$bed)) %>%
     map(allele_total, mtx = plink$bed) %>%
     as_matrix()
