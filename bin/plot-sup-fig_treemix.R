@@ -1,5 +1,6 @@
-cli::cli_h1("Treemix Analysis")
-cli::cli_alert_info("Loading required packages")
+cli::cli_h1("Plotting Sup. Figure 2 - Treemix")
+## Setup environment -----
+cli::cli_alert_info("Setup environment")
 suppressMessages({
   library(tidyverse)
   library(here)
@@ -17,19 +18,23 @@ dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
 
 ## Function ------
 exec_treemix <- function(
-  input, output, block = 50, root = "Mbuti", migration = NULL
-  ) {
-    suppressMessages(require(sys))
-    treemix <- c(
-      "docker", "run", "--rm", "-w", here(), "-v", paste0(here(), ":", here()),
-      "quay.io/biocontainers/treemix:1.13--h4bb999f_2", "treemix"
-    )
-    if (file.exists(paste0(output, ".treeout.gz"))) { return(0L) }
+  input, output, block = 50, root = "Mbuti", migration = NULL,
+  seed = 13121011, force = FALSE, stdout = stdout()
+) {
+  suppressMessages(require(sys))
+  treemix <- c(
+    "docker", "run", "--rm", "-w", here(), "-v", paste0(here(), ":", here()),
+    "quay.io/biocontainers/treemix:1.13--h4bb999f_2", "treemix"
+  )
+  if (!force && file.exists(paste0(output, ".treeout.gz")))
+    return(0L)
 
-    arg <- c("-i", input, "-o", output, "-k", block, "-root", root)
-    if (!is.null(migration))
-      arg <- c(arg, "-m", migration)
-    sys::exec_wait(treemix[1], c(treemix[-1], arg), std_out = FALSE)
+  arg <- c("-i", input, "-o", output, "-k", block, "-root", root)
+  if (!is.null(seed))
+    arg <- c(arg, "-seed", seed)
+  if (!is.null(migration))
+    arg <- c(arg, "-m", migration)
+  sys::exec_wait(treemix[1], c(treemix[-1], arg), std_out = stdout)
 }
 
 add_conf <- function(tree, boots) {
@@ -39,8 +44,12 @@ add_conf <- function(tree, boots) {
   treedata
 }
 
-read_migration <- function(lines) {
-  tree <- read.tree(text = lines[1])
+tree_crop <- function(tree, crop = .05) {
+  tree$edge.length <- pmin(tree$edge.length, crop)
+  tree
+}
+
+read_migration <- function(tree, lines) {
   node_df <- fortify(tree) %>% select(node, x, y)
 
   extract_node <- function(node) {
@@ -83,7 +92,7 @@ if (!file.exists(file)) {
     mutate(idx = match(sample, rownames(dat$bed)))
   samples <- fam_subset$idx
   populations <- with(fam_subset, split(idx, pop))
-  common_vars <- which(allele_freq(samples, dat$bed) > .01)
+  common_vars <- which(allele_freq(samples, dat$bed) > 0.01)
 
   cli::cli_alert_info(c(
     "Processing ",
@@ -110,20 +119,23 @@ best <- here("out", "treemix", "DataB_fq01")
 boot <- here("out", "treemix", "DataB_fq01_boot")
 
 if (!file.exists(paste0(best, ".treeout.gz"))) {
-  cli::cli_alert_warning("Unable to find treemix results")
-  exec_treemix(input = file, output = best, migration = 5)
+  cli::cli_alert_warning("Generating treemix ML tree")
+  exec_treemix(input = file, output = best, migration = 5, block = 50)
   cli::cli_alert_success("Complete treemix run")
 }
 
 if (!file.exists(paste0(boot, ".treeout.gz"))) {
-  cli::cli_alert_warning("Unable to find treemix bootstrap results")
+  cli::cli_alert_warning("Generating treemix ML tree bootstraps")
   suppressMessages({
     library(furrr)
     plan(multisession, workers = 4)
   })
 
   files <- paste0(boot, "-", 1:500)
-  reslt <- future_map_int(files, exec_treemix, input = file, .progress = TRUE)
+  reslt <- future_map_int(
+    files, exec_treemix, input = file, block = 50, seed = NULL, stdout = FALSE, force = TRUE,
+    .progress = TRUE
+  )
   if (any(reslt != 0)) {
     failed <- sum(reslt != 0)
     cli::cli_alert_danger("{sum(reslt != 0)} bootstrap runs failed!")
@@ -138,21 +150,20 @@ if (!file.exists(paste0(boot, ".treeout.gz"))) {
 }
 
 ## read sample info ------
+cli::cli_alert_info("Generating treemix plots")
 pop_subgroup <- fam %>% distinct(pop, subgroup) %>% with(split(pop, subgroup))
 
 treemix_lines <- read_lines(paste0(best, ".treeout.gz"))
 treemix_tree <- read.tree(text = treemix_lines[1])
+treemix_migr <- read_migration(treemix_tree, treemix_lines)
 treemix_boot <- read.tree(paste0(boot, ".treeout.gz"))
-treemix_migr <- read_migration(treemix_lines)
 
-cli::cli_alert_info("Generating treemix plots")
-treemix_best <-
-  treemix_tree %>%
+treemix_best <- treemix_tree %>%
   groupOTU(pop_subgroup) %>%
   add_conf(treemix_boot) %>%
   mutate(group = if_else(group == "0", NA_character_, as.character(group))) %>%
   ggtree(size = NA) +
-  geom_tree(layout = "slanted", aes(color = group)) +
+  geom_tree(aes(color = group)) +
   geom_tiplab(size = 2.5) +
   geom_nodelab(
     size = 2, hjust = 1.5, vjust = 0,
@@ -164,16 +175,18 @@ treemix_best <-
     aes(xend = xend, yend = yend, alpha = rate)
   ) +
   scale_x_continuous(expand = expansion(mult = c(0, .15))) +
-  scale_color_manual("Region", values = subgroups_pal2, na.value = "darkgray") +
+  scale_color_manual(
+    "Region", values = subgroups_pal2, limits = c("Africa", subgroups[-7]),
+    na.value = "darkgray"
+  ) +
   scale_alpha("Migration rate") +
   theme_tree2() +
   theme(
-    legend.position = c(0, 1),
-    legend.justification = c(0, 1),
+    legend.position = c(1, 1),
+    legend.justification = c(1, 1),
     legend.background = element_blank(),
     legend.key.height = unit(.8, "lines")
   )
-
 treemix_consensus <- consensus(treemix_boot, p = 0.75) %>%
   groupOTU(pop_subgroup) %>%
   add_conf(treemix_boot) %>%
@@ -201,7 +214,7 @@ treemix_consensus <- consensus(treemix_boot, p = 0.75) %>%
 
 ## Compile as a single figure
 save_plot(
-  here("figs", "sup-fig", "sup-fig_treemix-merged"),
+  here("figs", "sup-fig", "sup-fig2_treemix"),
   treemix_best / treemix_consensus,
   width = 6, height = 8
 )
