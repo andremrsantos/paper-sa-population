@@ -1,45 +1,81 @@
-library(tidyverse)
-library(here)
-library(patchwork)
-library(ggrepel)
+cli::cli_h1("Plotting Figure 1")
+## Setup environment -----
+cli::cli_alert_info("Setup environment")
 
-source(here("R", "setup.R"))
-source(here("R", "sample.R"))
-source(here("R", "plink.R"))
-source(here("R", "pca.R"))
-source(here("R", "map.R"))
+suppressMessages({
+  library(tidyverse)
+  library(here)
+  library(patchwork)
+  library(ggrepel)
+
+  source(here("R", "setup.R"))
+  source(here("R", "sample.R"))
+  source(here("R", "plink.R"))
+  source(here("R", "pca.R"))
+  source(here("R", "map.R"))
+})
 
 dir.create(here("figs", "fig1"), recursive = TRUE, showWarnings = FALSE)
-
-## Load data ----
-plink <- read_plink(here("out", "plink", "DataB"))
-
-fam <- left_join(plink$fam, read_sample_info())
-pop <- filter(fam, study == "This") %>%
-  group_by(pop) %>%
-  summarise(across(c(long, lat), mean))
-
-## Plot population location ----
-br_bb <- c(xmin = -58, xmax = -45, ymin = -8, ymax = 4) 
-br_sf <- load_br_map()
-am_sf <- load_america_map() %>% filter(name != "Brazil")
-
-br_map <- pop %>%
-  ggplot() +
-  base_america_map(map = am_sf) +
-  add_map(map = br_sf) +
-  geom_point(aes(long, lat), color = subgroups_pal["Amazon"]) +
-  coord_sf(xlim = br_bb[1:2], ylim = br_bb[3:4]) +
-  geom_text_repel(aes(long, lat, label = pop), size = 3)
-
-## Plot PCA ---
-dat <- filter(fam, study == "This")
-pca <- pca(plink, dat$sample)
 
 this_pal <- c(
   "#999999", "#E69F00", "#56B4E9", "#009E73",
   "#F0E442", "#0072B2", "#D55E00", "#CC79A7"
 )
+
+## Load data ----
+cli::cli_alert_info("Loading data")
+plink <- read_plink(here("out", "plink", "DataB"))
+
+fam <- left_join(plink$fam, read_sample_info())
+pop <- filter(fam, study == "This") %>%
+  group_by(pop) %>%
+  summarise(across(c(long, lat), mean), .groups = "drop")
+
+## Plot population location ----
+cli::cli_alert_info("Preparing panels")
+
+plot_box   <- c(xmin = -58, xmax = -45, ymin = -8, ymax = 4)
+brazil_sf  <- load_br_map()
+america_sf <- load_america_map() %>% filter(name != "Brazil")
+rivers_sf  <- ne_download(
+  type = "rivers_lake_centerlines", scale = 50, category = "physical",
+  returnclass = "sf"
+  ) %>%
+  ## Crop to plotting region
+  st_crop(plot_box) %>%
+  ## Collapse rivers
+  group_by(label) %>%
+  summarise()
+
+plot_map <- ggplot(pop) +
+  ## Plot maps
+  base_america_map(map = america_sf) +
+  add_map(map = brazil_sf) +
+  geom_sf(data = rivers_sf, color = "steelblue", alpha = .5) +
+  ## Add river labels
+  geom_sf_text(
+    aes(label = label, geometry = geometry),
+    data = filter(rivers_sf, label != "Xingu"), size = 2.5,
+    color = "steelblue", nudge_y = .8, nudge_x = -.4,
+  ) +
+  geom_sf_text(
+    aes(label = label, geometry = geometry),
+    data = filter(rivers_sf, label == "Xingu"), size = 2.5,
+    color = "steelblue", nudge_y = -.75, nudge_x = -.25, hjust = 1,
+  ) +
+  ## Indicate populations location
+  geom_point(aes(long, lat, color = pop)) +
+  geom_text(
+    aes(long, lat, label = pop), size = 3,
+    nudge_x = .1, nudge_y = .25, hjust = 0
+  ) +
+  coord_sf(xlim = plot_box[1:2], ylim = plot_box[3:4], expand = FALSE) +
+  scale_color_manual(values = this_pal)
+
+## Plot PCA ---
+dat <- filter(fam, study == "This")
+pca <- pca(plink, dat$sample)
+
 
 pca_plot <- dat %>%
   bind_cols(as_tibble(pca$projection)) %>%
@@ -91,23 +127,26 @@ mut_plot <- (impact_plot + guides(fill = "none") + freq_plot) +
 ## Combine plots
 pca_ <- pca_plot +
   geom_point() +
-  guides(color = guide_legend(size = 2, ncol = 2)) +
+  # guides(color = guide_legend(size = 1, ncol = 2)) +
   theme(
-    legend.position = c(1, 1),
-    legend.justification = c(1, 1),
+    legend.position = c(0, 1),
+    legend.justification = c(0, 1),
+    # legend.justification = c(1, 1),
     legend.background = element_blank(),
     legend.key.height = unit(.75, "line")
   )
-mut_ <- mut_plot +
+mut_ <- (impact_plot + guides(fill = "none") + freq_plot) &
+  scale_fill_manual(values = c("#fb8072", "#80b1d3")) &
   theme(
     axis.title = element_text(size = 8),
     legend.position = c(1, 0),
     legend.justification = c(1, 0),
+    legend.background = element_blank(),
     legend.key.height = unit(.75, "line")
   )
+map_ <- wrap_elements(plot = br_map + theme(plot.margin = margin()))
 
-fig1 <- ((br_map + pca_) / mut_) +
-  plot_layout(heights = c(3, 1), widths = c(1, 1)) +
+fig1 <- ((map_ + pca_) / mut_) +
+  plot_layout(heights = c(4, 1)) +
   plot_annotation(tag_levels = "A")
-
 save_plot(here("figs", "fig1", "fig-1_amz"), fig1, width = 8, height = 5)
