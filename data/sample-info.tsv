@@ -1,0 +1,440 @@
+sample	pop	pop_desc	country	group	subgroup	study	sample_age	description	lat	long
+AMZ34	AKW	Assurini Kwatinemo	Brazil	NAT	Amazon	This	Contemporan	Assurini Kwatinemo	-4.25877	-52.27844
+AMZ36	AKW	Assurini Kwatinemo	Brazil	NAT	Amazon	This	Contemporan	Assurini Kwatinemo	-4.25877	-52.27844
+AMZ10	AKW	Assurini Kwatinemo	Brazil	NAT	Amazon	This	Contemporan	Assurini Kwatinemo	-4.25877	-52.27844
+AMZ20	AKW	Assurini Kwatinemo	Brazil	NAT	Amazon	This	Contemporan	Assurini Kwatinemo	-4.25877	-52.27844
+AMZ30	AKW	Assurini Kwatinemo	Brazil	NAT	Amazon	This	Contemporan	Assurini Kwatinemo	-4.25877	-52.27844
+AMZ38	ARA	Arara	Brazil	NAT	Amazon	This	Contemporan	Arara	-4.31902	-54.0325
+AMZ13	ARA	Arara	Brazil	NAT	Amazon	This	Contemporan	Arara	-4.31902	-54.0325
+AMZ7	ARA	Arara	Brazil	NAT	Amazon	This	Contemporan	Arara	-4.31902	-54.0325
+AMZ19	ARA	Arara do Iriri	Brazil	NAT	Amazon	This	Contemporan	Arara Iriri	-4.31902	-54.03625
+AMZ40	ARA	Arara do Iriri	Brazil	NAT	Amazon	This	Contemporan	Arara Iriri	-4.31902	-54.03625
+AMZ8	ARA	Arara do Iriri	Brazil	NAT	Amazon	This	Contemporan	Arara Iriri	-4.31902	-54.03625
+AMZ48	ARW	Araweté	Brazil	NAT	Amazon	This	Contemporan	Araweté	-4.85015	-52.036521
+AMZ25	ARW	Araweté	Brazil	NAT	Amazon	This	Contemporan	Araweté	-4.85015	-52.036521
+AMZ35	ARW	Araweté	Brazil	NAT	Amazon	This	Contemporan	Araweté	-4.85015	-52.036521
+AMZ49	ARW	Araweté	Brazil	NAT	Amazon	This	Contemporan	Araweté	-4.85015	-52.036521
+AMZ6	ARW	Araweté	Brazil	NAT	Amazon	This	Contemporan	Araweté	-4.85015	-52.036521
+AMZ29	ARW	Araweté	Brazil	NAT	Amazon	This	Contemporan	Araweté	-4.85015	-52.036521
+AMZ32	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ12	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ22	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ4	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ41	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ56	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ58	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ2	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ18	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ11	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ27	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ5	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ42	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ44	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ47	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ23	AST	Assurini do Trocará	Brazil	NAT	Amazon	This	Contemporan	Assurini Trocará	-3.57956	-49.71828
+AMZ3	AWA	Awa Guajá	Brazil	NAT	Amazon	This	Contemporan	Awaguajá	-3.31876	-46.43921
+AMZ50	AWA	Awa Guajá	Brazil	NAT	Amazon	This	Contemporan	Awaguajá	-3.31876	-46.43921
+AMZ51	AWA	Awa Guajá	Brazil	NAT	Amazon	This	Contemporan	Awaguajá	-3.31876	-46.43921
+AMZ26	AWA	Awa Guajá	Brazil	NAT	Amazon	This	Contemporan	Awaguajá	-3.31876	-46.43921
+AMZ37	AWA	Awa Guajá	Brazil	NAT	Amazon	This	Contemporan	Awaguajá	-3.31876	-46.43921
+AMZ16	AWA	Awa Guajá	Brazil	NAT	Amazon	This	Contemporan	Awaguajá	-3.31876	-46.43921
+AMZ57	AWA	Awa Guajá	Brazil	NAT	Amazon	This	Contemporan	Awaguajá	-3.31876	-46.43921
+B_Karitiana-3	Karitiana	Karitiana	Brazil	NAT	Amazon	SGDP	Contemporan	Karitiana	-10	-63
+S_Karitiana-1	Karitiana	Karitiana	Brazil	NAT	Amazon	SGDP	Contemporan	Karitiana	-10	-63
+S_Karitiana-2	Karitiana	Karitiana	Brazil	NAT	Amazon	SGDP	Contemporan	Karitiana	-10	-63
+AMZ21	KAY	Kayapó	Brazil	NAT	Amazon	This	Contemporan	Kayapó	-6.3426	-50.789790000000004
+AMZ1	KAY	Xikrin do Odjá	Brazil	NAT	Amazon	This	Contemporan	Xikrin Odjá	-6.3426	-50.789790000000004
+AMZ15	KAY	Xikrin do Odjá	Brazil	NAT	Amazon	This	Contemporan	Xikrin Odjá	-6.3426	-50.789790000000004
+AMZ24	KAY	Xikrin do Katete	Brazil	NAT	Amazon	This	Contemporan	Xikrin Katete	-6.3426	-50.789790000000004
+AMZ28	KAY	Xikrin do Katete	Brazil	NAT	Amazon	This	Contemporan	Xikrin Katete	-6.3426	-50.789790000000004
+AMZ39	KAY	Xikrin do Katete	Brazil	NAT	Amazon	This	Contemporan	Xikrin Katete	-6.3426	-50.789790000000004
+AMZ46	KAY	Xikrin do Katete	Brazil	NAT	Amazon	This	Contemporan	Xikrin Katete	-6.3426	-50.789790000000004
+AMZ55	KAY	Xikrin do Katete	Brazil	NAT	Amazon	This	Contemporan	Xikrin Katete	-6.3426	-50.789790000000004
+AMZ33	PTJ	Zoé (Puturujará)	Brazil	NAT	Amazon	This	Contemporan	Zoé (Puturujará)	-0.25268	-55.80505
+AMZ45	PTJ	Zoé (Puturujará)	Brazil	NAT	Amazon	This	Contemporan	Zoé (Puturujará)	-0.25268	-55.80505
+AMZ31	PTJ	Zoé (Puturujará)	Brazil	NAT	Amazon	This	Contemporan	Zoé (Puturujará)	-0.25268	-55.80505
+AMZ53	PTJ	Zoé (Puturujará)	Brazil	NAT	Amazon	This	Contemporan	Zoé (Puturujará)	-0.25268	-55.80505
+AMZ17	PTJ	Zoé (Puturujará)	Brazil	NAT	Amazon	This	Contemporan	Zoé (Puturujará)	-0.25268	-55.80505
+S_Surui-1	Surui	Surui	Brazil	NAT	Amazon	SGDP	Contemporan	Surui	-11	-62
+S_Surui-2	Surui	Surui	Brazil	NAT	Amazon	SGDP	Contemporan	Surui	-11	-62
+AMZ52	WPI	Wajãpi	Brazil	NAT	Amazon	This	Contemporan	Waiãpi	1.06012	-51.81677
+AMZ54	WPI	Wajãpi	Brazil	NAT	Amazon	This	Contemporan	Waiãpi	1.06012	-51.81677
+AMZ9	WPI	Wajãpi	Brazil	NAT	Amazon	This	Contemporan	Waiãpi	1.06012	-51.81677
+AMZ14	WPI	Wajãpi	Brazil	NAT	Amazon	This	Contemporan	Waiãpi	1.06012	-51.81677
+AMZ43	WPI	Wajãpi	Brazil	NAT	Amazon	This	Contemporan	Waiãpi	1.06012	-51.81677
+S_Piapoco-1	Piapoco	Piapoco	Colombia	NAT	Amazon	SGDP	Contemporan	Piapoco	3	-68
+S_Piapoco-2	Piapoco	Piapoco	Colombia	NAT	Amazon	SGDP	Contemporan	Piapoco	3	-68
+GS000016938-ASM	Cachi	Cachi from Salta_Cachi, Argentina	Argentina	NAT	West Andes	EGDP	Contemporan	Cachi from Salta_Cachi, Argentina	-25.1	-66.2
+GS000016939-ASM	Cachi	Cachi from Salta_Cachi, Argentina	Argentina	NAT	West Andes	EGDP	Contemporan	Cachi from Salta_Cachi, Argentina	-25.1	-66.2
+GS000016940-ASM	Cachi	Cachi from Salta_Cachi, Argentina	Argentina	NAT	West Andes	EGDP	Contemporan	Cachi from Salta_Cachi, Argentina	-25.1	-66.2
+GS000017077-ASM	Cachi	Cachi from Salta_Cachi, Argentina	Argentina	NAT	West Andes	EGDP	Contemporan	Cachi from Salta_Cachi, Argentina	-25.1	-66.2
+GS000016942-ASM	Cachi	Cachi from Salta_Cachi, Argentina	Argentina	NAT	West Andes	EGDP	Contemporan	Cachi from Salta_Cachi, Argentina	-25.1	-66.2
+GS000016948-ASM	Colla	Colla from Salta_San_Antonio_de_los_Cobres, Argentina	Argentina	NAT	West Andes	EGDP	Contemporan	Colla from Salta_San_Antonio_de_los_Cobres, Argentina	-24.2	-66.3
+GS000016949-ASM	Colla	Colla from Salta_San_Antonio_de_los_Cobres, Argentina	Argentina	NAT	West Andes	EGDP	Contemporan	Colla from Salta_San_Antonio_de_los_Cobres, Argentina	-24.2	-66.3
+GS000016950-ASM	Colla	Colla from Salta_San_Antonio_de_los_Cobres, Argentina	Argentina	NAT	West Andes	EGDP	Contemporan	Colla from Salta_San_Antonio_de_los_Cobres, Argentina	-24.2	-66.3
+GS000016951-ASM	Colla	Colla from Salta_San_Antonio_de_los_Cobres, Argentina	Argentina	NAT	West Andes	EGDP	Contemporan	Colla from Salta_San_Antonio_de_los_Cobres, Argentina	-24.2	-66.3
+SRR6281505	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281512	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281519	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281526	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281533	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281540	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281506	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281513	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281520	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281527	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281534	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281541	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281507	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281514	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281521	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281528	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281535	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281542	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281508	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281515	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281522	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281529	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281536	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281543	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281509	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281516	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281523	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281530	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281537	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281544	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281510	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281517	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281524	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281531	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281538	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281545	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281511	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281518	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281525	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281532	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281539	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+SRR6281546	Aymara	Tiwanaku, Bolivia	Bolivia	NAT	West Andes	Crawford2017	Contemporan	Tiwanaku, Bolivia	-17	-68.5
+S_Quechua-1	Quechua	Quechua	Peru	NAT	West Andes	SGDP	Contemporan	Quechua	-13.5	-72
+S_Quechua-2	Quechua	Quechua	Peru	NAT	West Andes	SGDP	Contemporan	Quechua	-13.5	-72
+S_Quechua-3	Quechua	Quechua	Peru	NAT	West Andes	SGDP	Contemporan	Quechua	-13.5	-72
+S_Mayan-1	Mayan	Mayan	Mexico	NAT	North America	SGDP	Contemporan	Mayan	19	-91
+S_Mayan-2	Mayan	Mayan	Mexico	NAT	North America	SGDP	Contemporan	Mayan	19	-91
+B_Mixe-1	Mixe	Mixe	Mexico	NAT	North America	SGDP	Contemporan	Mixe	16.95	-96.58
+S_Mixe-2	Mixe	Mixe	Mexico	NAT	North America	SGDP	Contemporan	Mixe	16.95	-96.58
+S_Mixe-3	Mixe	Mixe	Mexico	NAT	North America	SGDP	Contemporan	Mixe	16.95	-96.58
+S_Mixtec-1	Mixtec	Mixtec	Mexico	NAT	North America	SGDP	Contemporan	Mixtec	17	-97
+S_Mixtec-2	Mixtec	Mixtec	Mexico	NAT	North America	SGDP	Contemporan	Mixtec	17	-97
+S_Pima-1	Pima	Pima	Mexico	NAT	North America	SGDP	Contemporan	Pima	29	-108
+S_Pima-2	Pima	Pima	Mexico	NAT	North America	SGDP	Contemporan	Pima	29	-108
+S_Zapotec-1	Zapotec	Zapotec	Mexico	NAT	North America	SGDP	Contemporan	Zapotec	16.5	-97.2
+S_Zapotec-2	Zapotec	Zapotec	Mexico	NAT	North America	SGDP	Contemporan	Zapotec	16.5	-97.2
+Andaman	Andaman	Andaman Island	AndamanIsland	OCE	Oceania	MorenoMayar2018	Contemporan	NA	NA	NA
+Aconcagua	Aconcagua	Mendoza province	Argentina	NAT	West Andes	MorenoMayar2018	Ancient	Mendoza province	-32.65	-70
+I0308_SM	ArroyoSeco	Arroyo Seco	Argentina	NAT	South East	Posth2018	Ancient	Arroyo Seco	-33.17	-60.5
+I0309_SM	ArroyoSeco	Arroyo Seco	Argentina	NAT	South East	Posth2018	Ancient	Arroyo Seco	-33.17	-60.5
+I1748_SM	ArroyoSeco	Arroyo Seco	Argentina	NAT	South East	Posth2018	Ancient	Arroyo Seco	-33.17	-60.5
+I2230_SM	ArroyoSeco	Arroyo Seco	Argentina	NAT	South East	Posth2018	Ancient	Arroyo Seco	-33.17	-60.5
+I2232_SM	ArroyoSeco	Arroyo Seco	Argentina	NAT	South East	Posth2018	Ancient	Arroyo Seco	-33.17	-60.5
+I7086_SM	ArroyoSeco	Arroyo Seco	Argentina	NAT	South East	Posth2018	Ancient	Arroyo Seco	-33.17	-60.5
+I7088_SM	ArroyoSeco	Arroyo Seco	Argentina	NAT	South East	Posth2018	Ancient	Arroyo Seco	-33.17	-60.5
+I7090_SM	ArroyoSeco	Arroyo Seco	Argentina	NAT	South East	Posth2018	Ancient	Arroyo Seco	-33.17	-60.5
+I8348_SM	LagunaChica	Laguna Chica	Argentina	NAT	South East	Posth2018	Ancient	Laguna Chica	-35.73	-58.38
+I3443_SM	Mayahak	Mayahak Cab Peak and Saki Tzui	Belize	NAT	Central America	Posth2018	Ancient	Mayahak Cab Peak and Saki Tzui	16.49	-88.91
+I5456_SM	Mayahak	Mayahak Cab Peak and Saki Tzui	Belize	NAT	Central America	Posth2018	Ancient	Mayahak Cab Peak and Saki Tzui	16.49	-88.91
+I5457_SM	Mayahak	Mayahak Cab Peak and Saki Tzui	Belize	NAT	Central America	Posth2018	Ancient	Mayahak Cab Peak and Saki Tzui	16.49	-88.91
+Enoque65	ENQ	Enoque	BRA	NAT	South East	Raghavan2015	Ancient	Enoque	-8.416	-42.333
+I9054_d_SM	Jabuticabeira	Jabuticabeira	Brazil	NAT	South East	Posth2018	Ancient	Jabuticabeira	-28.55	-49.01
+I9055_d_SM	Jabuticabeira	Jabuticabeira	Brazil	NAT	South East	Posth2018	Ancient	Jabuticabeira	-28.55	-49.01
+I9056_d_SM	Jabuticabeira	Jabuticabeira	Brazil	NAT	South East	Posth2018	Ancient	Jabuticabeira	-28.55	-49.01
+I9057_d_SM	Jabuticabeira	Jabuticabeira	Brazil	NAT	South East	Posth2018	Ancient	Jabuticabeira	-28.55	-49.01
+I9058_d_SM	Jabuticabeira	Jabuticabeira	Brazil	NAT	South East	Posth2018	Ancient	Jabuticabeira	-28.55	-49.01
+CP18	LapadoSanto	Lapa do Santo, Lagoa Santa	Brazil	NAT	South East	Posth2018	Ancient	Lapa do Santo, Lagoa Santa	-19.48	-44.04
+CP19	LapadoSanto	Lapa do Santo, Lagoa Santa	Brazil	NAT	South East	Posth2018	Ancient	Lapa do Santo, Lagoa Santa	-19.48	-44.04
+CP22_SM	LapadoSanto	Lapa do Santo, Lagoa Santa	Brazil	NAT	South East	Posth2018	Ancient	Lapa do Santo, Lagoa Santa	-19.48	-44.04
+CP23	LapadoSanto	Lapa do Santo, Lagoa Santa	Brazil	NAT	South East	Posth2018	Ancient	Lapa do Santo, Lagoa Santa	-19.48	-44.04
+CP25	LapadoSanto	Lapa do Santo, Lagoa Santa	Brazil	NAT	South East	Posth2018	Ancient	Lapa do Santo, Lagoa Santa	-19.48	-44.04
+CP26	LapadoSanto	Lapa do Santo, Lagoa Santa	Brazil	NAT	South East	Posth2018	Ancient	Lapa do Santo, Lagoa Santa	-19.48	-44.04
+SM	LapadoSanto	Lapa do Santo, Lagoa Santa	Brazil	NAT	South East	Posth2018	Ancient	Lapa do Santo, Lagoa Santa	-19.48	-44.04
+LAR001	Laranjal	Laranjal and Moraes	Brazil	NAT	South East	Posth2018	Ancient	Laranjal and Moraes	-24.25	-47.42
+LAR002	Laranjal	Laranjal and Moraes	Brazil	NAT	South East	Posth2018	Ancient	Laranjal and Moraes	-24.25	-47.42
+MOS001	Laranjal	Laranjal and Moraes	Brazil	NAT	South East	Posth2018	Ancient	Laranjal and Moraes	-24.25	-47.42
+Sumidouro4	Sumidouro	Sumidouro, Lagoa Santa	Brazil	NAT	South East	MorenoMayar2018	Ancient	Sumidouro, Lagoa Santa	-19.54	-43.94
+Sumidouro5	Sumidouro	Sumidouro, Lagoa Santa	Brazil	NAT	South East	MorenoMayar2018	Ancient	Sumidouro, Lagoa Santa	-19.54	-43.94
+Sumidouro6	Sumidouro	Sumidouro, Lagoa Santa	Brazil	NAT	South East	MorenoMayar2018	Ancient	Sumidouro, Lagoa Santa	-19.54	-43.94
+Sumidouro7	Sumidouro	Sumidouro, Lagoa Santa	Brazil	NAT	South East	MorenoMayar2018	Ancient	Sumidouro, Lagoa Santa	-19.54	-43.94
+Sumidouro8	Sumidouro	Sumidouro, Lagoa Santa	Brazil	NAT	South East	MorenoMayar2018	Ancient	Sumidouro, Lagoa Santa	-19.54	-43.94
+CK-09	ASO	AncientSouthwestern Ontario	Canadá	NAT	Eskimo	Scheib2018	Ancient	AncientSouthwestern Ontario	42.217	-83.067
+CK-13	ASO	AncientSouthwestern Ontario	Canadá	NAT	Eskimo	Scheib2018	Ancient	AncientSouthwestern Ontario	42.217	-83.067
+RM-83	ASO	AncientSouthwestern Ontario	Canadá	NAT	Eskimo	Scheib2018	Ancient	AncientSouthwestern Ontario	42.217	-83.067
+A460	Ayayema	Ayayema	Chile	NAT	South	MorenoMayar2018	Ancient	Ayayema	-50.1	-75.24
+I1752_SM	Conchali	Conchali	Chile	NAT	South	Posth2018	Ancient	Conchali	-33.37	-70.67
+I1754_SM	Conchali	Conchali	Chile	NAT	South	Posth2018	Ancient	Conchali	-33.37	-70.67
+I1753_SM	LosRieles	Los Rieles	Chile	NAT	South	Posth2018	Ancient	Los Rieles	-31.92	-71.5
+I11974	LosRieles	Los Rieles	Chile	NAT	South	Posth2018	Ancient	Los Rieles	-31.92	-71.5
+I2537_SM	PicaOcho	PicaOcho	Chile	NAT	West Andes	Posth2018	Ancient	PicaOcho	-20.51	-69.33
+5832	PuntaStaAna	Punta Santa Ana	Chile	NAT	South	MorenoMayar2018	Ancient	Punta Santa Ana	-53.63	-70.91
+Clovis	Anzick-1	Clovis	EUA	NAT	North America	Rasmussen2014	Ancient	Clovis	45.993	-110.661
+SN_17	ESN	Early San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Early San Nicolas	33.249	-119.499
+SN-20	ESN	Early San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Early San Nicolas	33.249	-119.499
+SN_25	ESN	Early San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Early San Nicolas	33.249	-119.499
+SN-37	ESN	Early San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Early San Nicolas	33.249	-119.499
+SN-40	ESN	Early San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Early San Nicolas	33.249	-119.499
+SN_44	ESN	Early San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Early San Nicolas	33.249	-119.499
+SN-48	ESN	Early San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Early San Nicolas	33.249	-119.499
+SN-54	ESN	Early San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Early San Nicolas	33.249	-119.499
+SN-58	ESN	Early San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Early San Nicolas	33.249	-119.499
+SN-59	ESN	Early San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Early San Nicolas	33.249	-119.499
+CT_1	LSCI	LateSouthern Channel Islands	EUA	NAT	North America	Scheib2018	Ancient	LateSouthern Channel Islands	33.383	-118.416
+SC_1	LSCI	LateSouthern Channel Islands	EUA	NAT	North America	Scheib2018	Ancient	LateSouthern Channel Islands	33.426	-117.611
+SC_3	LSCI	LateSouthern Channel Islands	EUA	NAT	North America	Scheib2018	Ancient	LateSouthern Channel Islands	33.426	-117.611
+SC-04	LSCI	LateSouthern Channel Islands	EUA	NAT	North America	Scheib2018	Ancient	LateSouthern Channel Islands	33.426	-117.611
+SC-05	LSCI	LateSouthern Channel Islands	EUA	NAT	North America	Scheib2018	Ancient	LateSouthern Channel Islands	33.426	-117.611
+SC_6	LSCI	LateSouthern Channel Islands	EUA	NAT	North America	Scheib2018	Ancient	LateSouthern Channel Islands	33.426	-117.611
+SC-07	LSCI	LateSouthern Channel Islands	EUA	NAT	North America	Scheib2018	Ancient	LateSouthern Channel Islands	33.426	-117.611
+SN_1	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN_3	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN_9	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN_10	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN_11	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN_13	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN_15	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN_16	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN_38	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN-50	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN-51	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN-52	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+SN-53	LSN	Late San Nicolas	EUA	NAT	North America	Scheib2018	Ancient	Late San Nicolas	33.249	-119.499
+CR_1	NCI_SB	Island Chumash	EUA	NAT	North America	Scheib2018	Ancient	Island Chumash	34	-119.716
+PS_6	NCI_SB	Mainland Chumash	EUA	NAT	North America	Scheib2018	Ancient	Mainland Chumash	34.905	-120.641
+PS_7	NCI_SB	Mainland Chumash	EUA	NAT	North America	Scheib2018	Ancient	Mainland Chumash	34.905	-120.641
+PS-09P	NCI_SB	Mainland Chumash	EUA	NAT	North America	Scheib2018	Ancient	Mainland Chumash	34.905	-120.641
+PS-34	NCI_SB	Mainland Chumash	EUA	NAT	North America	Scheib2018	Ancient	Mainland Chumash	34.905	-120.641
+SM-01	NCI_SB	Island Chumash	EUA	NAT	North America	Scheib2018	Ancient	Island Chumash	34.039	-120.375
+SM-02	NCI_SB	Island Chumash	EUA	NAT	North America	Scheib2018	Ancient	Island Chumash	34.039	-120.375
+I0237_SM	Botigiriayoq	Laramate, Highlands	Peru	NAT	West Andes	Posth2018	Ancient	Laramate, Highlands	-14.26	-74.86
+I1357_SM	Botigiriayoq	Laramate, Highlands	Peru	NAT	West Andes	Posth2018	Ancient	Laramate, Highlands	-14.26	-74.86
+I1484_SM	Botigiriayoq	Laramate, Highlands	Peru	NAT	West Andes	Posth2018	Ancient	Laramate, Highlands	-14.26	-74.86
+CP8_SM	Cuncaicha	Cuncaicha, Peru	Peru	NAT	West Andes	Posth2018	Ancient	Cuncaicha, Peru	-15.39	-72.61
+CP29_SM	Cuncaicha	Cuncaicha, Peru	Peru	NAT	West Andes	Posth2018	Ancient	Cuncaicha, Peru	-15.39	-72.61
+CUN008	Cuncaicha	Cuncaicha, Peru	Peru	NAT	West Andes	Posth2018	Ancient	Cuncaicha, Peru	-15.39	-72.61
+I2551_SM	Huayuncalla	Huayuncalla	Peru	NAT	West Andes	Posth2018	Ancient	Huayuncalla	-14.26	-74.86
+I2261_SM	LaGalgada	La Galgada	Peru	NAT	West Andes	Posth2018	Ancient	La Galgada	-8.47	-78.15
+I0038_SM	Lauricocha	Cueva Lauricocha	Peru	NAT	West Andes	Posth2018	Ancient	Cueva Lauricocha	-10.32	-76.67
+I0039_SM	Lauricocha	Cueva Lauricocha	Peru	NAT	West Andes	Posth2018	Ancient	Cueva Lauricocha	-10.32	-76.67
+I0040_SM	Lauricocha	Cueva Lauricocha	Peru	NAT	West Andes	Posth2018	Ancient	Cueva Lauricocha	-10.32	-76.67
+I0041_SM	Lauricocha	Cueva Lauricocha	Peru	NAT	West Andes	Posth2018	Ancient	Cueva Lauricocha	-10.32	-76.67
+I0238_SM	Lauricocha	Cueva Lauricocha	Peru	NAT	West Andes	Posth2018	Ancient	Cueva Lauricocha	-10.32	-76.67
+I1742_SM	Tranca	Laramate, Highlands	Peru	NAT	West Andes	Posth2018	Ancient	Laramate, Highlands	-14.26	-74.86
+I1485_SM	Yacotogia	Laramate, Highlands	Peru	NAT	West Andes	Posth2018	Ancient	Laramate, Highlands	-14.26	-74.86
+AM71	Kaweskar	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-49.139	-74.453
+Nr66	Kaweskar	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-49.139	-74.453
+Nr72	Kaweskar	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-49.139	-74.453
+Nr73	Kaweskar	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-49.139	-74.453
+Nr74	Kaweskar	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-49.139	-74.453
+ERR2270782	Kaweskar	Terra do Fogo	Chile	NAT	South	Fuente2018	Contemporan	Terra do Fogo	-49.139	-74.453
+ERR2270783	Kaweskar	Terra do Fogo	Chile	NAT	South	Fuente2018	Contemporan	Terra do Fogo	-49.139	-74.453
+MA572	Selkman	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-54	-68.5
+MA575	Selkman	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-54	-68.5
+MA577	Selkman	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-54	-68.5
+890	Yagharn	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-55.27	-68.26
+894	Yagharn	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-55.27	-68.26
+895	Yagharn	Terra do Fogo	Chile	NAT	South	Raghavan2015	Contemporan	Terra do Fogo	-55.27	-68.26
+ERR2270784	Yagharn	Terra do Fogo	Chile	NAT	South	Fuente2018	Contemporan	Terra do Fogo	-55.27	-68.26
+ERR2270785	Yagharn	Terra do Fogo	Chile	NAT	South	Fuente2018	Contemporan	Terra do Fogo	-55.27	-68.26
+S_Chane-1	Chane	Chane	Argentina	NAT	South East	SGDP	Contemporan	Chane	-22.53	-63.82
+GS000016943-ASM	Wichi	Wichi from Salta_Embarcación, Argentina	Argentina	NAT	South East	EGDP	Contemporan	Wichi from Salta_Embarcación, Argentina	-23.2	-64.1
+GS000016944-ASM	Wichi	Wichi from Salta_Embarcación, Argentina	Argentina	NAT	South East	EGDP	Contemporan	Wichi from Salta_Embarcación, Argentina	-23.2	-64.1
+GS000016945-ASM	Wichi	Wichi from Salta_Embarcación, Argentina	Argentina	NAT	South East	EGDP	Contemporan	Wichi from Salta_Embarcación, Argentina	-23.2	-64.1
+GS000016946-ASM	Wichi	Wichi from Salta_Embarcación, Argentina	Argentina	NAT	South East	EGDP	Contemporan	Wichi from Salta_Embarcación, Argentina	-23.2	-64.1
+S_Mozabite-1	Mozabite	Mozabite	Algeria	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Mozabite-2	Mozabite	Mozabite	Algeria	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_BantuHerero-1	BantuHerero	BantuHerero	BotswanaOrNamibia	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_BantuHerero-2	BantuHerero	BantuHerero	BotswanaOrNamibia	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_BantuTswana-1	BantuTswana	BantuTswana	BotswanaOrNamibia	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_BantuTswana-2	BantuTswana	BantuTswana	BotswanaOrNamibia	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Biaka-1	Biaka	Biaka	Central African Republic	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Biaka-2	Biaka	Biaka	Central African Republic	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+B_Mbuti-4	Mbuti	Mbuti	Congo	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Mbuti-1	Mbuti	Mbuti	Congo	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Mbuti-2	Mbuti	Mbuti	Congo	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Mbuti-3	Mbuti	Mbuti	Congo	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Gambian-1	Gambian	Gambian	Gambia	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Gambian-2	Gambian	Gambian	Gambia	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_BantuKenya-1	BantuKenya	BantuKenya	Kenya	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_BantuKenya-2	BantuKenya	BantuKenya	Kenya	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Luhya-1	Luhya	Luhya	Kenya	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Luhya-2	Luhya	Luhya	Kenya	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Luo-1	Luo	Luo	Kenya	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Luo-2	Luo	Luo	Kenya	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Masai-1	Masai	Masai	Kenya	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Masai-2	Masai	Masai	Kenya	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Somali-1	Somali	Somali	Kenya	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+B_Ju_hoan_North-4	Ju_hoan_North	Ju_hoan_North	Namibia	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Ju_hoan_North-1	Ju_hoan_North	Ju_hoan_North	Namibia	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Ju_hoan_North-2	Ju_hoan_North	Ju_hoan_North	Namibia	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Ju_hoan_North-3	Ju_hoan_North	Ju_hoan_North	Namibia	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Esan-1	Esan	Esan	Nigeria	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Esan-2	Esan	Esan	Nigeria	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+B_Yoruba-3	Yoruba	Yoruba	Nigeria	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Yoruba-1	Yoruba	Yoruba	Nigeria	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Yoruba-2	Yoruba	Yoruba	Nigeria	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+B_Mandenka-3	Mandenka	Mandenka	Senegal	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Mandenka-1	Mandenka	Mandenka	Senegal	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Mandenka-2	Mandenka	Mandenka	Senegal	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Mende-1	Mende	Mende	SierraLeone	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Mende-2	Mende	Mende	SierraLeone	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Khomani_San-1	Khomani_San	Khomani_San	SouthAfrica	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Khomani_San-2	Khomani_San	Khomani_San	SouthAfrica	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+B_Dinka-3	Dinka	Dinka	Sudan	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Dinka-1	Dinka	Dinka	Sudan	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Dinka-2	Dinka	Dinka	Sudan	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Saharawi-1	Saharawi	Saharawi	Western Sahara (Morocco)	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Saharawi-2	Saharawi	Saharawi	Western Sahara (Morocco)	AFR	Africa	SGDP	Contemporan	NA	NA	NA
+S_Cambodian-1	Cambodian	Cambodian	Cambodia	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Cambodian-2	Cambodian	Cambodian	Cambodia	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+B_Dai-4	Dai	Dai	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Dai-1	Dai	Dai	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Dai-2	Dai	Dai	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Dai-3	Dai	Dai	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Daur-2	Daur	Daur	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+B_Han-3	Han	Han	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Han-1	Han	Han	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Han-2	Han	Han	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Hezhen-1	Hezhen	Hezhen	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Hezhen-2	Hezhen	Hezhen	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Lahu-1	Lahu	Lahu	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Lahu-2	Lahu	Lahu	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Miao-1	Miao	Miao	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Miao-2	Miao	Miao	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Naxi-1	Naxi	Naxi	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Naxi-2	Naxi	Naxi	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Naxi-3	Naxi	Naxi	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Oroqen-1	Oroqen	Oroqen	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Oroqen-2	Oroqen	Oroqen	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_She-1	She	She	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_She-2	She	She	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Tu-1	Tu	Tu	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Tu-2	Tu	Tu	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Tujia-1	Tujia	Tujia	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Tujia-2	Tujia	Tujia	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Uygur-1	Uygur	Uygur	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Uygur-2	Uygur	Uygur	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Xibo-1	Xibo	Xibo	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Xibo-2	Xibo	Xibo	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Yi-1	Yi	Yi	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Yi-2	Yi	Yi	China	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Japanese-1	Japanese	Japanese	Japan	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Japanese-2	Japanese	Japanese	Japan	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Japanese-3	Japanese	Japanese	Japan	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Korean-1	Korean	Korean	Korea	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Korean-2	Korean	Korean	Korea	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Burmese-1	Burmese	Burmese	Myanmar	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Burmese-2	Burmese	Burmese	Myanmar	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Ami-1	Ami	Ami	Taiwan	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Ami-2	Ami	Ami	Taiwan	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Atayal-1	Atayal	Atayal	Taiwan	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Thai-1	Thai	Thai	Thailand	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Thai-2	Thai	Thai	Thailand	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Kinh-1	Kinh	Kinh	Vietnam	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Kinh-2	Kinh	Kinh	Vietnam	EAS	East Asia	SGDP	Contemporan	NA	NA	NA
+S_Abkhasian-1	Abkhasian	Abkhasian	Abkhazia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Albanian-1	Albanian	Albanian	Albania	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Armenian-1	Armenian	Armenian	Armenia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Armenian-2	Armenian	Armenian	Armenia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Bulgarian-1	Bulgarian	Bulgarian	Bulgaria	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Bulgarian-2	Bulgarian	Bulgarian	Bulgaria	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Czech-2	Czech	Czech	Czechoslovia(pre1989)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_English-1	English	English	UK	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_English-2	English	English	UK	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Estonian-1	Estonian	Estonian	Estonia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Estonian-2	Estonian	Estonian	Estonia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Finnish-1	Finnish	Finnish	Finland	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Finnish-2	Finnish	Finnish	Finland	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Finnish-3	Finnish	Finnish	Finland	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Saami-1	Saami	Saami	Finland	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Saami-2	Saami	Saami	Finland	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Basque-1	Basque	Basque	France	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Basque-2	Basque	Basque	France	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+B_French-3	French	French	France	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_French-1	French	French	France	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_French-2	French	French	France	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Georgian-1	Georgian	Georgian	Georgia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Georgian-2	Georgian	Georgian	Georgia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+B_Crete-1	Crete	Crete	Greece	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+B_Crete-2	Crete	Crete	Greece	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Greek-1	Greek	Greek	Greece	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Greek-2	Greek	Greek	Greece	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Hungarian-1	Hungarian	Hungarian	Hungary	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Hungarian-2	Hungarian	Hungarian	Hungary	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Icelandic-1	Icelandic	Icelandic	Iceland	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Icelandic-2	Icelandic	Icelandic	Iceland	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Iranian-1	Iranian	Iranian	Iran	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Iranian-2	Iranian	Iranian	Iran	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Iraqi_Jew-1	Iraqi_Jew	Iraqi_Jew	Iraq	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Iraqi_Jew-2	Iraqi_Jew	Iraqi_Jew	Iraq	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Samaritan-1	Samaritan	Samaritan	Israel	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Druze-1	Druze	Druze	Israel(Carmel)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Druze-2	Druze	Druze	Israel(Carmel)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Palestinian-3	Palestinian	Palestinian	Israel(Central)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Palestinian-1	Palestinian	Palestinian	Israel(Central)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Palestinian-2	Palestinian	Palestinian	Israel(Central)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_BedouinB-1	BedouinB	BedouinB	Israel(Negev)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_BedouinB-2	BedouinB	BedouinB	Israel(Negev)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+B_Sardinian-3	Sardinian	Sardinian	Italy	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Bergamo-1	Bergamo	Bergamo	Italy(Bergamo)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Bergamo-2	Bergamo	Bergamo	Italy(Bergamo)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Sardinian-1	Sardinian	Sardinian	Italy(Sardinia)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Sardinian-2	Sardinian	Sardinian	Italy(Sardinia)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Tuscan-1	Tuscan	Tuscan	Italy(Tuscany)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Tuscan-2	Tuscan	Tuscan	Italy(Tuscany)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Jordanian-2	Jordanian	Jordanian	Jordan	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Jordanian-1	Jordanian	Jordanian	Jordan	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Jordanian-3	Jordanian	Jordanian	Jordan	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Norwegian-1	Norwegian	Norwegian	Norway	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Orcadian-1	Orcadian	Orcadian	OrkneyIslands	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Orcadian-2	Orcadian	Orcadian	OrkneyIslands	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Polish-1	Polish	Polish	Poland	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Abkhasian-2	Abkhasian	Abkhasian	Russia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Chechen-1	Chechen	Chechen	Russia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Lezgin-1	Lezgin	Lezgin	Russia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Lezgin-2	Lezgin	Lezgin	Russia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_North_Ossetian-1	North_Ossetian	North_Ossetian	Russia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_North_Ossetian-2	North_Ossetian	North_Ossetian	Russia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Russian-1	Russian	Russian	Russia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Russian-2	Russian	Russian	Russia	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Adygei-1	Adygei	Adygei	Russia(Caucasus)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Adygei-2	Adygei	Adygei	Russia(Caucasus)	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Spanish-1	Spanish	Spanish	Spain	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Spanish-2	Spanish	Spanish	Spain	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Tajik-1	Tajik	Tajik	Tajikistan	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Tajik-2	Tajik	Tajik	Tajikistan	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Turkish-1	Turkish	Turkish	Turkey	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Turkish-2	Turkish	Turkish	Turkey	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Yemenite_Jew-1	Yemenite_Jew	Yemenite_Jew	Yemen	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+S_Yemenite_Jew-2	Yemenite_Jew	Yemenite_Jew	Yemen	EUR	West Eurasia	SGDP	Contemporan	NA	NA	NA
+B_Australian-3	Australian	Australian	Australia	OCE	Oceania	SGDP	Contemporan	NA	NA	NA
+B_Australian-4	Australian	Australian	Australia	OCE	Oceania	SGDP	Contemporan	NA	NA	NA
+S_Dusun-1	Dusun	Dusun	Brunei	OCE	Oceania	SGDP	Contemporan	NA	NA	NA
+S_Dusun-2	Dusun	Dusun	Brunei	OCE	Oceania	SGDP	Contemporan	NA	NA	NA
+S_Maori-1	Maori	Maori	New Zealand	OCE	Oceania	SGDP	Contemporan	NA	NA	NA
+S_Bougainville-1	Bougainville	Bougainville	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Bougainville-2	Bougainville	Bougainville	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+B_Papuan-15	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-3	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-1	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-10	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-11	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-12	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-13	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-14	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-2	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-4	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-5	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-6	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-7	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-8	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Papuan-9	Papuan	Papuan	Papua New Guinea	OCE	Papua New Guinea	SGDP	Contemporan	NA	NA	NA
+S_Igorot-1	Igorot	Igorot	Philippines	OCE	Oceania	SGDP	Contemporan	NA	NA	NA
+S_Igorot-2	Igorot	Igorot	Philippines	OCE	Oceania	SGDP	Contemporan	NA	NA	NA
+S_Hawaiian-1	Hawaiian	Hawaiian	USA	OCE	Oceania	SGDP	Contemporan	NA	NA	NA

@@ -2,7 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-data/
 out/
 figs/
 .DS_Store
