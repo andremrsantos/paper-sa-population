@@ -48,17 +48,19 @@ add_map <- function(map, color = "#cccccc", fill = "#fefefe") {
 }
 
 idw_america <- function(dat) {
-  require(sp)
-  require(gstat)
-  require(raster)
-  
+  suppressMessages({
+    require(sp)
+    require(gstat)
+    require(raster)
+  })
   america_sf <- load_america_map()
-  
-  america_union <- sf::st_union(sf::st_buffer(america_sf, 0.1)) %>% as("Spatial")
+  america_union <- sf::st_buffer(america_sf, 0.1) %>%
+    sf::st_union() %>%
+    as("Spatial")
   america_grid  <- makegrid(america_union)
   colnames(america_grid) <- c("long", "lat")
   coordinates(america_grid) <- ~ long + lat
-  
+
   dat %>%
     map(function(x) { sp::coordinates(x) <- ~ long + lat; return(x) }) %>%
     ## Interpolate and rasterize dstat
@@ -70,5 +72,3 @@ idw_america <- function(dat) {
         as_tibble()
     }, .id = "Desc")
 }
-
-
