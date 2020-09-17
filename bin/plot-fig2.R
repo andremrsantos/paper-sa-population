@@ -90,7 +90,7 @@ america_scatterpie <- qdt %>%
 
 ## Plot distruct
 america_distruct <- wrap(
-  plot_distruct(qdt, subgroup2, pop, single_axis = TRUE, K = K) +
+  plot_distruct(qdt, subgroup2, single_axis = TRUE, K = K) +
   scale_fill_manual(values = cbpal) +
   facet_grid(K~., scales = "free", space = "free") +
   theme(

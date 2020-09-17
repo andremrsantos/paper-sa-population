@@ -25,7 +25,9 @@ read_log <- function(file) {
 }
 
 plot_distruct <- function(dat, group, ..., K = NULL) {
-  if(!rlang::quo_is_null(enquo(K))) dat <- group_by(dat, {{K}})
+  if (!rlang::quo_is_null(enquo(K))) {
+    dat <- group_by(dat, {{K}})
+  }
 
   dat <- dat %>%
     arrange(..., {{group}}) %>%
@@ -68,4 +70,12 @@ plot_distruct <- function(dat, group, ..., K = NULL) {
       panel.spacing.y = unit(2, "pt"),
       legend.position = "none"
     )
+}
+
+strip_clip_off <- function(plot, strip = c("r", "l", "t", "b")) {
+  strip <- paste0("strip-", match.arg(strip))
+  q <- ggplotGrob(plot)
+  for (i in which(grepl(strip, q$layout$name)))
+    q$grobs[[i]]$layout$clip <- "off"
+  patchwork::wrap_elements(q)
 }
