@@ -6,7 +6,7 @@ suppressMessages({
   library(tidyverse)
   library(here)
   library(patchwork)
-  library(ggrepel)
+  library(janitor)
 
   source(here("R", "setup.R"))
   source(here("R", "sample.R"))
@@ -31,9 +31,10 @@ pop <- filter(fam, study == "This") %>%
   group_by(pop) %>%
   summarise(across(c(long, lat), mean), .groups = "drop")
 
-## Plot population location ----
+## Generate plots ------
 cli::cli_alert_info("Preparing panels")
 
+## Plot population location ----
 plot_box   <- c(xmin = -58, xmax = -45, ymin = -8, ymax = 4)
 brazil_sf  <- load_br_map()
 america_sf <- load_america_map() %>% filter(name != "Brazil")
@@ -72,22 +73,29 @@ plot_map <- ggplot(pop) +
   coord_sf(xlim = plot_box[1:2], ylim = plot_box[3:4], expand = FALSE) +
   scale_color_manual(values = this_pal)
 
-## Plot PCA ---
+## Plot PCA -----
 dat <- filter(fam, study == "This")
 pca <- pca(plink, dat$sample)
 
-
-pca_plot <- dat %>%
+plot_pca <- dat %>%
   bind_cols(as_tibble(pca$projection)) %>%
   plot_pca(PC01, PC02, color = pop) +
-  scale_color_manual("Population", values = this_pal)
+  scale_color_manual("Population", values = this_pal) +
+  geom_point() +
+  theme(
+    legend.position = c(0, 1),
+    legend.justification = c(0, 1),
+    legend.background = element_blank(),
+    legend.key.height = unit(.75, "line")
+  )
 
-## Mutation Statistics
-nat_dat <- here::here("data", "nat_variant_info.tsv.gz") %>%
-  readr::read_tsv(col_types = "cicciidccccddd") %>%
-  janitor::clean_names() %>%
-  dplyr::filter(alt != "*") %>%
-  dplyr::mutate(
+## Plot Mutation Statistics -----
+## Load variants info
+nat_dat <- here("data", "nat_variant_info.tsv.gz") %>%
+  read_tsv(col_types = "cicciidccccddd") %>%
+  clean_names() %>%
+  filter(alt != "*") %>%
+  mutate(
     ref_af = pmax(kg_af, exac_af, gnmd_af, na.rm = TRUE),
     impact = case_when(
       str_detect(ann_impact, "HIGH") ~ "High",
@@ -95,7 +103,7 @@ nat_dat <- here::here("data", "nat_variant_info.tsv.gz") %>%
       str_detect(ann_impact, "LOW") ~ "Low",
       str_detect(ann_impact, "MODIFIER") ~ "Modifier",
       TRUE ~ "Modifier"
-    ) %>%
+      ) %>%
       parse_factor(c("High", "Moderate", "Low", "Modifier")),
     known = if_else(is.na(ref_af), "Novel", "Known") %>%
       parse_factor(c("Novel", "Known")),
@@ -105,37 +113,20 @@ nat_dat <- here::here("data", "nat_variant_info.tsv.gz") %>%
       af < 0.1 ~ "10%",
       af < 0.25 ~ "25%",
       TRUE ~ "> 25%"
-    ) %>%
+      ) %>%
       parse_factor(c("Singleton", "2-4 Alleles", "10%", "25%", "> 25%"))
   )
 
-freq_plot <- nat_dat %>%
-  ggplot2::ggplot(aes(freq_class, fill = known)) +
-  ggplot2::geom_bar() +
-  ggplot2::coord_flip() +
-  ggplot2::labs(x = "Allele Frequency", y = "Number of Variants", fill = "")
-impact_plot <- nat_dat %>%
-  ggplot2::ggplot(aes(impact, fill = known)) +
-  ggplot2::geom_bar() +
-  ggplot2::coord_flip() +
-  ggplot2::labs(x = "Impact", y = "Number of Variants", fill = "")
+plot_by_freq <- ggplot(nat_dat, aes(freq_class, fill = known)) +
+  geom_bar() +
+  coord_flip() +
+  labs(x = "Allele Frequency", y = "Number of Variants", fill = "")
+plot_by_impact <- ggplot(nat_dat, aes(impact, fill = known)) +
+  geom_bar(show.legend = FALSE) +
+  coord_flip() +
+  labs(x = "Impact", y = "Number of Variants", fill = "")
 
-mut_plot <- (impact_plot + guides(fill = "none") + freq_plot) +
-  plot_layout() &
-  ggplot2::scale_fill_manual(values = c("#fb8072", "#80b1d3"))
-
-## Combine plots
-pca_ <- pca_plot +
-  geom_point() +
-  # guides(color = guide_legend(size = 1, ncol = 2)) +
-  theme(
-    legend.position = c(0, 1),
-    legend.justification = c(0, 1),
-    # legend.justification = c(1, 1),
-    legend.background = element_blank(),
-    legend.key.height = unit(.75, "line")
-  )
-mut_ <- (impact_plot + guides(fill = "none") + freq_plot) &
+plot_snv <- (plot_by_impact + plot_by_freq) &
   scale_fill_manual(values = c("#fb8072", "#80b1d3")) &
   theme(
     axis.title = element_text(size = 8),
@@ -144,9 +135,17 @@ mut_ <- (impact_plot + guides(fill = "none") + freq_plot) &
     legend.background = element_blank(),
     legend.key.height = unit(.75, "line")
   )
-map_ <- wrap_elements(plot = br_map + theme(plot.margin = margin()))
 
-fig1 <- ((map_ + pca_) / mut_) +
-  plot_layout(heights = c(4, 1)) +
-  plot_annotation(tag_levels = "A")
-save_plot(here("figs", "fig1", "fig-1_amz"), fig1, width = 8, height = 5)
+## Combine plots
+cli::cli_alert_info("Saving Figure 1")
+
+map_ <- wrap_elements(plot = plot_map + theme(plot.margin = margin()))
+save_plot(
+  here("figs", "fig1", "fig-1_amz"),
+  ((map_ + plot_pca) / plot_snv) +
+    plot_layout(heights = c(4, 1)) +
+    plot_annotation(tag_levels = "A"),
+  width = 8, height = 5
+)
+
+cli::cli_alert_success("Done!")
