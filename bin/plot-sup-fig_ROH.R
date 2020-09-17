@@ -51,14 +51,12 @@ plot_roh <- function(dat, shape) {
   )
 
   roh_pop <- summarise_roh(dat, {{shape}}, pop, subgroup) %>%
+    filter(subgroup == "Amazon") %>%
     ggplot(aes(total_length, pop, shape = {{shape}}, color = subgroup)) +
     theme_classic(8, "Helvetica") +
     plot_pointrange +
     plot_style +
-    guides(
-      shape = ggplot2::guide_legend(title.position = "top"),
-      color = ggplot2::guide_legend(title.position = "top", nrow = 3)
-    ) +
+    guides(shape = "none", color = "none") +
     facet_grid(subgroup~., scales = "free", space = "free") +
     labs(y = "Population", x = "Total ROH length (Mbp)")
   
@@ -73,11 +71,14 @@ plot_roh <- function(dat, shape) {
     ggplot(aes(total_length, rohs, color = subgroup, shape = {{shape}})) +
     plot_scatter +
     plot_style +
-    guides(shape = "none", color = "none") +
+    guides(
+      shape = ggplot2::guide_legend(title.position = "top", nrow = 2),
+      color = ggplot2::guide_legend(title.position = "top", nrow = 3)
+    ) +
     labs(x = "Total ROH length (Mbp)", y = "Total number of ROHs")
   
   (roh_length + roh_scatter + guide_area() + roh_pop) +
-    plot_layout(guides = "collect", design = "14\n24\n34") +
+    plot_layout(guides = "collect", design = "14\n23") +
     plot_annotation(tag_levels = "A") &
     theme(legend.direction = "horizontal")
 }
@@ -105,7 +106,6 @@ if (!file.exists(here("out", "roh", "DataB.hom"))) {
   cli::cli_alert_success("Completed ROH data calculation")
 }
 
-
 ## Load data -----
 cli::cli_alert_info("Loading ROH data")
 
@@ -118,18 +118,18 @@ roh <- here("out", "roh", "DataB.hom") %>%
   )
 
 ## Plots -------
-## A) ROH by age
-cli::cli_alert_info("Generating ROH plots by sample age")
-save_plot(
-  here("figs", "sup-fig", "sup-fig_roh-age"),
-  plot_roh(roh, age), width = 8, height = 8
-)
+# ## A) ROH by age
+# cli::cli_alert_info("Generating ROH plots by sample age")
+# save_plot(
+#   here("figs", "sup-fig", "sup-fig_roh-age"),
+#   plot_roh(roh, age), width = 8, height = 8
+# )
 
 ## B) ROH Study
 cli::cli_alert_info("Generating ROH plots by sample study")
 save_plot(
-  here("figs", "sup-fig", "sup-fig_roh-study"),
+  here("figs", "sup-fig", "sup-fig7_roh"),
   plot_roh(filter(roh, age == "Contemporan"), study),
-  width = 8, height = 8
+  width = 8, height = 6
 )
 cli::cli_alert_success("Done!")
