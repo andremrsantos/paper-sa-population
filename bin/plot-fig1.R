@@ -91,30 +91,16 @@ plot_pca <- dat %>%
 
 ## Plot Mutation Statistics -----
 ## Load variants info
-nat_dat <- here("data", "nat_variant_info.tsv.gz") %>%
-  read_tsv(col_types = "cicciidccccddd") %>%
-  clean_names() %>%
-  filter(alt != "*") %>%
+nat_dat <- here("data", "nat_variants.tsv.gz") %>%
+  read_tsv(col_types = "cicccdccc") %>%
   mutate(
-    ref_af = pmax(kg_af, exac_af, gnmd_af, na.rm = TRUE),
-    impact = case_when(
-      str_detect(ann_impact, "HIGH") ~ "High",
-      str_detect(ann_impact, "MODERATE") ~ "Moderate",
-      str_detect(ann_impact, "LOW") ~ "Low",
-      str_detect(ann_impact, "MODIFIER") ~ "Modifier",
-      TRUE ~ "Modifier"
-      ) %>%
-      parse_factor(c("High", "Moderate", "Low", "Modifier")),
-    known = if_else(is.na(ref_af), "Novel", "Known") %>%
-      parse_factor(c("Novel", "Known")),
-    freq_class = case_when(
-      ac == 1 ~ "Singleton",
-      ac < 4 ~ "2-4 Alleles",
-      af < 0.1 ~ "10%",
-      af < 0.25 ~ "25%",
-      TRUE ~ "> 25%"
-      ) %>%
-      parse_factor(c("Singleton", "2-4 Alleles", "10%", "25%", "> 25%"))
+    known  = parse_factor(is_known, c("Novel", "Known")),
+    impact = parse_factor(
+      allele_impact, c("High", "Moderate", "Low", "Modifier")
+    ),
+    freq_class = parse_factor(
+      frequency_class, c("Singleton", "2-4 Alleles", "10%", "25%", "> 25%")
+    )
   )
 
 plot_by_freq <- ggplot(nat_dat, aes(freq_class, fill = known)) +
