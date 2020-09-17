@@ -11,7 +11,6 @@ source(here("R", "pca.R"))
 theme_set(theme_classic(10, "Helvetica"))
 
 dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
-set.seed(05051991)
 ## Load
 dat <- read_plink(here("out", "plink", "DataB"))
 dat$fam <- left_join(dat$fam, read_sample_info())

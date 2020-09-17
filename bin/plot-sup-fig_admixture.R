@@ -1,4 +1,4 @@
-cli::cli_h1("Plotting Sup. Figure 1 - Admixture")
+cli::cli_h1("Plotting Sup. Figure 1/3 - Admixture")
 ## Setup environment -----
 cli::cli_alert_info("Setup environment")
 
