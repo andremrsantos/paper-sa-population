@@ -1,5 +1,7 @@
 set.seed(551991)
 
+options(dplyr.summarise.inform = FALSE)
+
 ## Wrapper to save both PDF and TIFF
 save_plot <- function(prefix, plot, ...) {
   dir.create(dirname(prefix), showWarnings = FALSE, recursive = TRUE)
