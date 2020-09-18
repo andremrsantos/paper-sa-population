@@ -28,6 +28,7 @@ summarise_roh <- function(dat, ...) {
 }
 
 plot_roh <- function(dat, shape) {
+  studies <- c("This", "SGDP", "Crawford2017", "Fuente2018", "Raghavan2015")
   ## Define default setup
   plot_pointrange <- list(
     stat_summary(
@@ -42,7 +43,7 @@ plot_roh <- function(dat, shape) {
   plot_scatter <- geom_point(size = 1.5)
 
   plot_style <- list(
-    scale_shape_manual("Sample Age", values = 1:5 + 20),
+    scale_shape_manual("Study", values = set_names(1:5 + 20, studies)),
     scale_color_manual("Region", values = subgroups_pal2),
     theme(
       strip.text.y = element_text(angle = 0, hjust = 0),
@@ -57,7 +58,7 @@ plot_roh <- function(dat, shape) {
     plot_pointrange +
     plot_style +
     guides(shape = "none", color = "none") +
-    facet_grid(subgroup~., scales = "free", space = "free") +
+    # facet_grid(subgroup~., scales = "free", space = "free") +
     labs(y = "Population", x = "Total ROH length (Mbp)")
   
   roh_length <- summarise_roh(dat, {{shape}}, subgroup, length) %>%

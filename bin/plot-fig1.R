@@ -65,7 +65,7 @@ plot_map <- ggplot(pop) +
     color = "steelblue", nudge_y = -.75, nudge_x = -.25, hjust = 1,
   ) +
   ## Indicate populations location
-  geom_point(aes(long, lat, color = pop)) +
+  geom_point(aes(long, lat, color = pop), show.legend = FALSE) +
   geom_text(
     aes(long, lat, label = pop), size = 3,
     nudge_x = .1, nudge_y = .25, hjust = 0
