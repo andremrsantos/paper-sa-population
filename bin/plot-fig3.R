@@ -25,7 +25,7 @@ pop <- fam %>%
   summarise(across(c(lat, long), mean))
 
 order <- c(
-  "AKW", "ARA", "ARW", "AST", "AWA", "KAY", "PTJ", "WPI", "Surui", "Karitiana",
+  "AKW", "ARA", "ARW", "AST", "AWA", "KAY", "ZOE", "WPI", "Surui", "Karitiana",
   "Jabuticabeira", "LapadoSanto", "Laranjal", "Sumidouro"
 )
 
