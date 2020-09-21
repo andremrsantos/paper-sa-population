@@ -17,7 +17,7 @@ allele_count <- function(indv, mtx) {
 
 allele_total <- function(indv, mtx) {
   total_na <- matrixStats::colCounts(mtx, rows = indv, value = NA_integer_)
-  (2 * length(indv) - total_na)
+  2 * (length(indv) - total_na)
 }
 
 allele_freq <- function(indv, mtx) {
@@ -57,7 +57,7 @@ as_idx <- function(names, w, x, y, z = NULL) {
 }
 
 dstat <- function(w, x, y, z, freq, size = 100, fn = jackknife_ds) {
-  list(w=w, x=x, y=y, z=z) %>%
+  list(w = w, x = x, y = y, z = z) %>%
     cross_df() %>%
     filter(w != x, w != y, w != z, x != y, x != y, y != z) %>%
     mutate(

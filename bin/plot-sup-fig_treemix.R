@@ -19,7 +19,7 @@ dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
 ## Function ------
 exec_treemix <- function(
   input, output, block = 50, root = "Mbuti", migration = NULL,
-  seed = 13121011, force = FALSE, stdout = stdout()
+  seed = 13121011, force = FALSE, stdout = TRUE
 ) {
   suppressMessages(require(sys))
   treemix <- c(
@@ -163,7 +163,7 @@ treemix_best <- treemix_tree %>%
   add_conf(treemix_boot) %>%
   mutate(group = if_else(group == "0", NA_character_, as.character(group))) %>%
   ggtree(size = NA) +
-  geom_tree(aes(color = group)) +
+  geom_tree(layout = "slanted", aes(color = group)) +
   geom_tiplab(size = 2.5) +
   geom_nodelab(
     size = 2, hjust = 1.5, vjust = 0,
@@ -182,8 +182,8 @@ treemix_best <- treemix_tree %>%
   scale_alpha("Migration rate") +
   theme_tree2() +
   theme(
-    legend.position = c(1, 1),
-    legend.justification = c(1, 1),
+    legend.position = c(0, 1),
+    legend.justification = c(0, 1),
     legend.background = element_blank(),
     legend.key.height = unit(.8, "lines")
   )
@@ -206,7 +206,7 @@ treemix_consensus <- consensus(treemix_boot, p = 0.75) %>%
     na.value = "darkgray",
   ) +
   theme(
-    legend.position = c(0, 1),
+    legend.position = "none",
     legend.justification = c(0, 1),
     legend.background = element_blank(),
     legend.key.height = unit(.8, "lines")
