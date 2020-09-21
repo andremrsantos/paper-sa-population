@@ -15,8 +15,6 @@ suppressMessages({
 })
 
 dir.create(here("figs", "fig4"), recursive = TRUE, showWarnings = FALSE)
-dir.create(here("figs", "sup-fig"), recursive = TRUE, showWarnings = FALSE)
-
 
 pluck_pop <- function(dat, ...) {
   filter(dat, ...) %>% pull(pop) %>% unique()
