@@ -7,8 +7,8 @@ summarise_location <- function(dat, ...) {
 }
 
 load_america_map <- function() {
-  america_ct <- c("North America", "Central America", "South America")
-  rnaturalearth::ne_countries(continent = america_ct, returnclass = "sf")
+  rnaturalearth::ne_countries(returnclass = "sf") %>%
+    sf::st_crop(map, xmin = -130, ymin = -55, xmax = -30, ymax = 60)
 }
 
 load_br_map <- function() {
@@ -20,7 +20,6 @@ base_america_map <- function(color = "#cccccc", fill = "#fefefe", map = NULL) {
     america_sf <- load_america_map()
   else
     america_sf <- map
-  
   list(
     add_map(map = america_sf, fill = fill, color = color),
     scale_shape_manual("Age", values = c(16, 15)),
@@ -31,7 +30,7 @@ base_america_map <- function(color = "#cccccc", fill = "#fefefe", map = NULL) {
       axis.ticks = element_blank(),
       panel.border = element_rect(fill = NA),
       panel.background = element_rect(fill = "lightblue1"),
-      legend.key.height = unit(0.7,"line"),
+      legend.key.height = unit(0.7, "line"),
       legend.key.width = unit(1, "line"),
       legend.position = c(0.01, 0.01),
       legend.justification = c(0, 0),
