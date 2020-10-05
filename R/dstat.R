@@ -85,7 +85,7 @@ f3_stat <- function(w, x, y, ac, an, size = 100, fn = jackknife_f3s) {
 plot_dstat_scatter <- function(dat, x = x, color = age) {
   ggplot(dat, aes(reorder({{x}}, {{color}}), zv)) +
     geom_hline(
-      yintercept = c(-3, 3), linetype = "dashed", color = "firebrick"
+      yintercept = c(-2, 2), linetype = "dashed", color = "firebrick"
     ) +
     geom_quasirandom(size = 1, shape = 1) +
     stat_summary(aes(color = {{color}}), fun.data = median_hilow) +
@@ -93,7 +93,7 @@ plot_dstat_scatter <- function(dat, x = x, color = age) {
     labs(x = "Population") +
     scale_color_brewer(palette = "Set1") +
     theme(
-      legend.position ="bottom",
+      legend.position = "bottom",
       strip.text.y = element_text(angle = 0, hjust = 0),
       strip.background = element_blank()
     )
