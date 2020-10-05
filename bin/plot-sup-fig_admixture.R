@@ -32,7 +32,7 @@ dat <- tibble(Ks = 2:10, K = factor(Ks, labels = sprintf("K=%d", Ks))) %>%
   unnest(c(q, log))
 
 ## plot full distruct
-cli::cli_alert_info("Generating Sup Figure 1 - Admixture")
+cli::cli_alert_info("Generating Sup Figure 5 - Admixture")
 distruct_plot <-
   plot_distruct(select(dat, -Ks), pop, subgroup2, K = K) +
   scale_fill_manual(values = cbpal) +
@@ -45,11 +45,11 @@ distruct_plot <-
     panel.spacing.x = unit(.4, "lines")
   )
 save_plot(
-  here("figs", "sup-fig", "sup-fig1_admixture"),
+  here("figs", "sup-fig", "sup-fig5_admixture"),
   strip_clip_off(distruct_plot, "r"), width = 8, height = 11
 )
 
-cli::cli_alert_info("Generating Sup Figure 3 - Admixture Diagnostics")
+cli::cli_alert_info("Generating Sup Figure 6 - Admixture Diagnostics")
 full_diagnostic <- dat %>%
   distinct(Ks, cv_error, likelihood) %>%
   rename(`CV Error` = cv_error, Likelihood = likelihood) %>%
@@ -66,7 +66,7 @@ full_diagnostic <- dat %>%
     strip.placement = "outside"
   )
 save_plot(
-  here("figs", "sup-fig", "sup-fig3_admixture-diagnostic"),
+  here("figs", "sup-fig", "sup-fig6_admixture-diagnostic"),
   full_diagnostic, width = 4, height = 4
 )
 

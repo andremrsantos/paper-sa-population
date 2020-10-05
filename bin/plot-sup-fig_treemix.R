@@ -214,7 +214,7 @@ treemix_consensus <- consensus(treemix_boot, p = 0.75) %>%
 
 ## Compile as a single figure
 save_plot(
-  here("figs", "sup-fig", "sup-fig2_treemix"),
+  here("figs", "sup-fig", "sup-fig7_treemix"),
   treemix_best / treemix_consensus,
   width = 6, height = 8
 )

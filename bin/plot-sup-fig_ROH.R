@@ -129,7 +129,7 @@ roh <- here("out", "roh", "DataB.hom") %>%
 ## B) ROH Study
 cli::cli_alert_info("Generating ROH plots by sample study")
 save_plot(
-  here("figs", "sup-fig", "sup-fig7_roh"),
+  here("figs", "sup-fig", "sup-fig3_roh"),
   plot_roh(filter(roh, age == "Contemporan"), study),
   width = 8, height = 6
 )

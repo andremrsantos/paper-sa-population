@@ -20,7 +20,7 @@ dat <- read_plink(here("out", "plink", "DataB"))
 fam <- left_join(dat$fam, read_sample_info())
 
 ## Amazon PCA
-cli::cli_alert_info("Generating Sup Figure 4 - Amazon")
+cli::cli_alert_info("Generating Sup Figure 1 - Amazon")
 this_pal <- c(
   "#999999", "#E69F00", "#56B4E9", "#009E73",
   "#F0E442", "#0072B2", "#D55E00", "#CC79A7"
@@ -36,7 +36,7 @@ pca_plot <- amz_dat %>%
 pve_plot <- plot_pve(amz_pca)
 
 save_plot(
-  here("figs", "sup-fig", "sup-fig4_amz-pca"),
+  here("figs", "sup-fig", "sup-fig1_amz-pca"),
   pca_plot / pve_plot +
     plot_layout(heights = c(3, 1)) +
     plot_annotation(tag_levels = "A"),
@@ -44,7 +44,7 @@ save_plot(
 )
 
 ## Native America PCA
-cli::cli_alert_info("Generating Sup Figure 5 - Contemporan Native American")
+cli::cli_alert_info("Generating Sup Figure 4 - Contemporan Native American")
 nat_dat <- filter(fam, group == "NAT", age == "Contemporan")
 nat_pca <- pca(dat, nat_dat$sample)
 
@@ -55,7 +55,7 @@ pca_plot <- nat_dat %>%
 pve_plot <- plot_pve(nat_pca)
 
 save_plot(
-  here("figs", "sup-fig", "sup-fig5_nat-pca"),
+  here("figs", "sup-fig", "sup-fig4_nat-pca"),
   pca_plot / pve_plot +
     plot_layout(heights = c(3, 1)) +
     plot_annotation(tag_levels = "A"),
@@ -63,7 +63,7 @@ save_plot(
 )
 
 ## Global PCA
-cli::cli_alert_info("Generating Sup Figure 6 - Whole world")
+cli::cli_alert_info("Generating Sup Figure 2 - Whole world")
 global_dat <- filter(fam, age == "Contemporan")
 global_pca <- pca(dat, global_dat$sample)
 
@@ -74,7 +74,7 @@ pca_plot <- global_dat %>%
 pve_plot <- plot_pve(global_pca)
 
 save_plot(
-  here("figs", "sup-fig", "sup-fig6_global-pca"),
+  here("figs", "sup-fig", "sup-fig2_global-pca"),
   pca_plot / pve_plot +
     plot_layout(heights = c(3, 1)) +
     plot_annotation(tag_levels = "A"),
