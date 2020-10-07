@@ -40,7 +40,7 @@ distruct_plot <-
   facet_grid(subgroup2~K, scales = "free", space = "free") +
   theme(
     axis.text.y = element_text(size = 5),
-    strip.text.y = element_text(angle = 0, hjust = 0, size = 8),
+    strip.text.y = element_text(angle = 0, hjust = 0, size = 6),
     strip.background.y = element_blank(),
     panel.spacing.x = unit(.4, "lines")
   )

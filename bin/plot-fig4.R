@@ -35,7 +35,7 @@ cli::cli_alert_info("Compute D-statistics models")
 native <- pluck_pop(fam, group == "NAT")
 amazon <- pluck_pop(fam, subgroup == "Amazon", age == "Contemporan")
 wandes <- pluck_pop(fam, subgroup == "West Andes", age == "Contemporan")
-south  <- pluck_pop(fam, subgroup == "South", age == "Contemporan")
+south  <- pluck_pop(fam, subgroup == "Southern America", age == "Contemporan")
 
 dstat_models_file <- here("out", "dstat-model.rds")
 if (!file.exists(dstat_models_file)) {
@@ -59,8 +59,8 @@ cli::cli_alert_info("Generating plots")
 dstat_idw <- dstat_models %>%
   set_names(c(
     "(A) D(Mbuti,X;Amazon,West Andes)\n(X, Amazon) <---> (X, West Andes)",
-    "(B) D(Mbuti,X;South,West Andes)\n(X, South) <---> (X, West Andes)",
-    "(C) D(Mbuti,X;Amazon,South)\n(X, Amazon) <---> (X, South)"
+    "(B) D(Mbuti,X;Southern America,West Andes)\n(X, Southern America) <---> (X, West Andes)",
+    "(C) D(Mbuti,X;Amazon,Southern America)\n(X, Amazon) <---> (X, Southern America)"
   )) %>%
   map(mutate, zv = pmax(pmin(zv, 10), -10)) %>% # Cropping at [-10, 10]
   map(left_join, pop, by = c(x = "pop")) %>%

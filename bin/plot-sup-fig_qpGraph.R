@@ -45,26 +45,28 @@ admixtree_layout <- function(edge) {
 }
 
 plot_admixtree <- function(layout, ...) {
-  ggraph(layout, color = "darkgray") + 
-    geom_edge_link(
-      aes(linetype = type, ...),
-      angle_calc = 'along', label_dodge = unit(2.5, 'mm'), label_size = 2
-    ) +
-    geom_node_label(aes(
-      label = name, color = region,
-      filter = !str_starts(name, "SA") & name != "Root"
-    ), size = 2) +
-    scale_edge_linetype_manual(
-      "Edge",
-      values = c(edge = "solid", admix = "dashed"),
-      labels = c(admix = "Admixture", edge = "Normal"),
-      limits = c("edge", "admix")
-    ) +
-    scale_color_manual(
-      values = subgroups_pal, guide = "none", na.value = "darkgray"
-    ) +
-    theme(legend.position = c(0, 1), legend.justification = c(0, 1)) +
-    coord_cartesian(clip = "off")
+  ggraph(layout, color = "darkgray") +
+  geom_edge_link(
+    aes(linetype = type, ...),
+    angle_calc = 'along', label_dodge = unit(2.5, 'mm'), label_size = 2
+  ) +
+  geom_node_label(aes(
+    label = str_wrap(name, 8), color = region,
+    filter = !str_starts(name, "SA") & name != "Root"
+  ), size = 1.25) +
+  scale_edge_linetype_manual(
+    "Edge",
+    values = c(edge = "solid", admix = "dashed"),
+    labels = c(admix = "Admixture", edge = "Normal"),
+    limits = c("edge", "admix")
+  ) +
+  scale_color_manual(
+    values = subgroups_pal, guide = "none", na.value = "darkgray"
+  ) +
+  theme(legend.position = c(0, 1), legend.justification = c(0, 1)) +
+  scale_x_continuous(expand = expansion(mult = c(.2, .2))) +
+  scale_y_continuous(expand = expansion(mult = c(.2, .2))) +
+  coord_cartesian(clip = "off")
 }
 
 add_leaves <- function(model, leaves) {
@@ -87,11 +89,9 @@ fam <- read_fam(paste0(data_prefix, ".fam")) %>%
   )
 
 ## Define Models --------
-node <- tibble(
-  name = c(
-    "Root", "SAB", "SA1", "SA2", "SA3", "Out",
-    "WestAndes", "Amazon", "South", "SouthEast"
-  ),
+leaves <- c("Out", "West Andes", "Amazon", "Southern America", "Southeast America")
+node   <- tibble(
+  name = c("Root", "SAB", "SA1", "SA2", "SA3", leaves),
   region = name
 )
 
@@ -102,32 +102,32 @@ models <- list(
     "Root", "SAB", "edge",
     "SAB", "SA1", "edge",
     "SAB", "SA2", "edge",
-    "SA1", "South", "edge",
-    "SA1", "WestAndes", "edge",
+    "SA1", "Southern America", "edge",
+    "SA1", "West Andes", "edge",
     "SA2", "Amazon", "edge",
-    "SA2", "SouthEast", "edge",
+    "SA2", "Southeast America", "edge",
   ),
   model2 = tribble(
     ~ from, ~ to, ~type,
     "Root", "Out", "edge",
     "Root", "SA1", "edge",
-    "SA1", "South", "edge",
+    "SA1", "Southern America", "edge",
     "SA1", "SA2", "edge",
     "SA2", "SA3", "edge",
     "SA2", "Amazon", "edge",
-    "SA3", "WestAndes", "edge",
-    "SA3", "SouthEast", "edge",
+    "SA3", "West Andes", "edge",
+    "SA3", "Southeast America", "edge",
   ),
   model3 = tribble(
     ~ from, ~ to, ~type,
     "Root", "Out", "edge",
     "Root", "SA1", "edge",
     "SA1", "SA2", "edge",
-    "SA1", "WestAndes", "edge",
+    "SA1", "West Andes", "edge",
     "SA2", "SA3", "edge",
-    "SA2", "South", "edge",
+    "SA2", "Southern America", "edge",
     "SA3", "Amazon", "edge",
-    "SA3", "SouthEast", "edge",
+    "SA3", "Southeast America", "edge",
   )
 )
 
@@ -143,12 +143,13 @@ if (!file.exists(model_dat_file)) {
   pop_subset <- unique(fam$pop)
   pop_group <- distinct(fam, pop, subgroup) %>% with(split(pop, subgroup))
   pop_combn <- list(
-    Out = c("Mbuti", "Han", "Pima", "Mayan"),
-    WestAndes = pop_group[["West Andes"]],
-    Amazon = pop_group[["Amazon"]],
-    South = pop_group[["South"]],
-    SouthEast = pop_group[["South East"]]
+    c("Mbuti", "Han", "Pima", "Mayan"),
+    pop_group[["West Andes"]],
+    pop_group[["Amazon"]],
+    pop_group[["Southern America"]],
+    pop_group[["Southeast America"]]
   ) %>%
+  set_names(leaves) %>%
   cross()
 
   ## Pre-compute F2
@@ -194,7 +195,7 @@ top_models <- dat %>%
     edges = map(graph, "edges"),
     name = sprintf("%s - Worst F4: %.2f", model_name, score)
   ) %>%
-  slice_min(score, n = 10)
+  slice_min(abs(score), n = 10)
 
 top_models_plot <- top_models$edges %>%
   map(admixtree_layout) %>%

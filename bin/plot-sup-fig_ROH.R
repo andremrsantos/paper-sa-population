@@ -18,17 +18,18 @@ length_labels <- c("0-.5", ".5-1", "1-2", "2-4", "4-8", "8-16", ">16")
 
 subgroup_subset <- c(
   "Africa", "West Eurasia", "East Asia", "North America",
-  "Amazon", "West Andes", "South East", "South"
+  "Amazon", "West Andes", "Southeast America", "Southern America"
 )
 
 summarise_roh <- function(dat, ...) {
   dat %>%
-    dplyr::group_by(IID, ...) %>%
-    dplyr::summarise(total_length = sum(KB)/1e3, rohs = n(), .groups =  "drop") 
+    group_by(IID, ...) %>%
+    summarise(total_length = sum(KB)/1e3, rohs = n(), .groups =  "drop") %>%
+    ungroup()
 }
 
 plot_roh <- function(dat, shape) {
-  studies <- c("This", "SGDP", "Crawford2017", "Fuente2018", "Raghavan2015")
+  studies <- c("Present study", "SGDP", "Crawford2017", "Fuente2018", "Raghavan2015")
   ## Define default setup
   plot_pointrange <- list(
     stat_summary(
@@ -52,6 +53,7 @@ plot_roh <- function(dat, shape) {
   )
 
   roh_pop <- summarise_roh(dat, {{shape}}, pop, subgroup) %>%
+    mutate(study = parse_factor(study, studies)) %>%
     filter(subgroup == "Amazon") %>%
     ggplot(aes(total_length, pop, shape = {{shape}}, color = subgroup)) +
     theme_classic(8, "Helvetica") +
@@ -60,8 +62,9 @@ plot_roh <- function(dat, shape) {
     guides(shape = "none", color = "none") +
     # facet_grid(subgroup~., scales = "free", space = "free") +
     labs(y = "Population", x = "Total ROH length (Mbp)")
-  
+
   roh_length <- summarise_roh(dat, {{shape}}, subgroup, length) %>%
+    mutate(study = parse_factor(study, studies)) %>%
     ggplot(aes(length, total_length, color = subgroup, shape = {{shape}})) +
     plot_pointrange +
     plot_style +
@@ -69,6 +72,7 @@ plot_roh <- function(dat, shape) {
     labs(x = "ROH length category (Mbp)", y = "Total ROH length (Mbp)")
 
   roh_scatter <- summarise_roh(dat, {{shape}}, subgroup) %>%
+    mutate(study = parse_factor(study, studies)) %>%
     ggplot(aes(total_length, rohs, color = subgroup, shape = {{shape}})) +
     plot_scatter +
     plot_style +
@@ -77,7 +81,7 @@ plot_roh <- function(dat, shape) {
       color = ggplot2::guide_legend(title.position = "top", nrow = 3)
     ) +
     labs(x = "Total ROH length (Mbp)", y = "Total number of ROHs")
-  
+
   (roh_length + roh_scatter + guide_area() + roh_pop) +
     plot_layout(guides = "collect", design = "14\n23") +
     plot_annotation(tag_levels = "A") &

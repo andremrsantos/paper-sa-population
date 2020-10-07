@@ -26,13 +26,13 @@ this_pal <- c(
   "#F0E442", "#0072B2", "#D55E00", "#CC79A7"
 )
 
-amz_dat <- filter(fam, study == "This")
+amz_dat <- filter(fam, study == "Present study")
 amz_pca <- pca(dat, amz_dat$sample)
 
 pca_plot <- amz_dat %>%
   bind_cols(as_tibble(amz_pca$projection)) %>%
   plot_pca_expanded(color = pop) +
-  scale_color_manual(values = this_pal)
+  scale_color_manual("Population", values = this_pal)
 pve_plot <- plot_pve(amz_pca)
 
 save_plot(

@@ -27,7 +27,7 @@ cli::cli_alert_info("Loading data")
 plink <- read_plink(here("out", "plink", "DataB"))
 
 fam <- left_join(plink$fam, read_sample_info())
-pop <- filter(fam, study == "This") %>%
+pop <- filter(fam, study == "Present study") %>%
   group_by(pop) %>%
   summarise(across(c(long, lat), mean), .groups = "drop")
 
@@ -74,7 +74,7 @@ plot_map <- ggplot(pop) +
   scale_color_manual(values = this_pal)
 
 ## Plot PCA -----
-dat <- filter(fam, study == "This")
+dat <- filter(fam, study == "Present study")
 pca <- pca(plink, dat$sample)
 
 plot_pca <- dat %>%
