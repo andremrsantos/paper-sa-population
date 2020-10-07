@@ -27,7 +27,7 @@ groups <- c("AFR", "EUR", "EAS", "NAT", "OCE", "CAS", "SAS")
 
 subgroups <- c(
   "North America", "Central America", "Amazon",
-  "South East", "West Andes", "South", "Eskimo"
+  "Southeast America", "West Andes", "Southern America", "Eskimo"
 )
 subgroups_pal <-
   c("#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69")
@@ -39,15 +39,15 @@ subgroups_pal2 <-set_names(
 )
 
 subgroup_full <- c(
-  "Africa", "West Eurasia", "South West Asia", "East Asia", "Eskimo",
+  "Africa", "West Eurasia", "Southern America West Asia", "East Asia", "Eskimo",
   "North America", "Central America", "Amazon", "West Andes",
-  "South East", "South", "Central Asia & Siberia", "Oceania",
+  "Southeast America", "Southern America", "Central Asia & Siberia", "Oceania",
   "Papua New Guinea"
 )
 
 subgroups2 <- c(
-  "Africa", "West Eurasia", "South West Asia", "East Asia",
+  "Africa", "West Eurasia", "Southern America West Asia", "East Asia",
   subgroups, paste0("Ancient\n", subgroups),
   "Central Asia & Siberia", "Oceania", "Papua New Guinea"
   ) %>%
-  str_replace("\n(South|Eskimo)", " \\1")
+  str_replace("\n(Eskimo)", " \\1")

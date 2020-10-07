@@ -15,7 +15,7 @@ read_sample_info <- function() {
       paste0("Ancient\n", subgroup),
       as.character(subgroup)
     ) %>%
-      str_replace("\n(South|Eskimo)", " \\1") %>%
+      str_replace("\n(Eskimo)", " \\1") %>%
       parse_factor(subgroups2)
   ) %>%
   select(-sample_age)
